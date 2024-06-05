@@ -132,7 +132,9 @@ for (let i = 0; i < array.length; i++) {
         array[minIndex] = between;
     }
 }
-
+document.write(
+    `- Sắp xếp mảng theo thứ tự tăng dần: <b>array = [${array}]</b><br>`
+);
 // Chèn số vào mảng
 var element = 4;
 var newArray = [];
@@ -151,5 +153,5 @@ if (!local) {
 }
 
 document.write(
-    `Sau khi thực hiện yêu cầu bài toán ta có: <br> <b>array = [${newArray}]</b> <br> <br>`
+    `- chèn thêm số 4 vào mảng, ta có:  <b>array = [${newArray}]</b> <br> <br>`
 );
