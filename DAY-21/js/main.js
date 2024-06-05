@@ -23,7 +23,7 @@ if (array.length !== 0) {
         "<br> Số lớn nhất trong mảng là " + max + ", vị trí = " + indexMax
     );
     document.write(
-        "<br> số nhỏ nhất trong mảng là " + min + ", vị trí = " + indexMin
+        "<br> Số nhỏ nhất trong mảng là " + min + ", vị trí = " + indexMin
     );
 } else {
     document.write("<br>>>>Mảng không có giá trị nào<<<");
@@ -113,7 +113,7 @@ Cho trước 1 mảng số nguyên và thực hiện các yêu cầu sau: <br>
 - Bước 1: Sắp xếp mảng theo thứ tự tăng dần <br>
 
 - Bước 2: Chèn thêm 1 số vào bất kỳ vị trí nào trong mảng mà không làm thay đổi thứ tự sắp xếp của mảng<br>
-<b>array = [1, 8, 3, 5, 1, 2, -2]</b>
+<b>array = [1, 8, 3, 5, 6, 9, -2]</b>
 <br><br><br><b>Bài Làm</b><br>`);
 
 var array = [1, 8, 3, 5, 6, 9, -2];
