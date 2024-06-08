@@ -4,17 +4,17 @@ var data = [
     {
         img: "./assets/img/cat-1.jpg",
         title: "Tiêu đề bài viết 1",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque similique, tempore ipsam id iste voluptate sint illum autem aut tenetur minima impedit vero non accusamus sequi ad recusandae at quibusdam! Ducimus suscipit inventore commodi cum laudantium, mollitia deleniti, quas est laboriosam architecto ullam debitis quae? Hic vel autem, aperiam eaque dolore modi sed consequatur, laborum consectetur ipsam consequuntur magni, facere placeat similique dolor culpa at!",
+        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque similique, tempore ipsam id iste voluptate sint illum autem aut tenetur minima impedit vero non accusamus sequi ad recusandae at quibusdam! Ducimus suscipit inventore commodi cum laudantium, mollitia deleniti, quas est laboriosam architecto ullam debitis quae? Hic vel autem, aperiam eaque dolore modi sed consequatur, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, facere placeat similique dolor culpa at!",
     },
     {
         img: "./assets/img/cat-1.jpg",
         title: "Tiêu đề bài viết 2",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque similique, tempore ipsam id iste voluptate sint illum autem aut tenetur minima impedit vero non accusamus sequi ad recusandae at quibusdam! Ducimus suscipit inventore commodi cum laudantium, mollitia deleniti, quas est laboriosam architecto ullam debitis quae? Hic vel autem, aperiam eaque dolore modi sed consequatur, laborum consectetur ipsam consequuntur magni, facere placeat similique dolor culpa at!",
+        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque similique, tempore ipsam id iste voluptate sint illum autem aut tenetur minima impedit vero non accusamus sequi ad recusandae at quibusdam! Ducimus suscipit inventore commodi cum laudantium, mollitia deleniti, quas est laboriosam architecto ullam debitis quae? Hic vel autem, aperiam eaque dolore modi sed consequatur, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, facere placeat similique dolor culpa at!",
     },
     {
         img: "./assets/img/cat-1.jpg",
         title: "Tiêu đề bài viết 3",
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque similique, tempore ipsam id iste voluptate sint illum autem aut tenetur minima impedit vero non accusamus sequi ad recusandae at quibusdam! Ducimus suscipit inventore commodi cum laudantium, mollitia deleniti, quas est laboriosam architecto ullam debitis quae? Hic vel autem, aperiam eaque dolore modi sed consequatur, laborum consectetur ipsam consequuntur magni, facere placeat similique dolor culpa at!",
+        desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi doloremque similique, tempore ipsam id iste voluptate sint illum autem aut tenetur minima impedit vero non accusamus sequi ad recusandae at quibusdam! Ducimus suscipit inventore commodi cum laudantium, mollitia deleniti, quas est laboriosam architecto ullam debitis quae? Hic vel autem, aperiam eaque dolore modi sed consequatur, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, laborum consectetur ipsam consequuntur magni, facere placeat similique dolor culpa at!",
     },
 ];
 
