@@ -175,7 +175,7 @@ function handleRegister(name, password, email) {
 // Login User
 function handleLogin(email, password) {
     const user = data.find(function (value) {
-        return (value.email === email) & (value.password === password);
+        return value.email === email && value.password === password;
     });
 
     if (user) {
