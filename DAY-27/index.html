@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dân Trí</title>
+        <!-- Reset CSS -->
+        <link rel="stylesheet" href="./ressets/css/reset.css" />
+
+        <!-- Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Style -->
+        <link rel="stylesheet" href="./ressets/css/styles.css" />
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        <button class="login-account" type="button">Đăng nhập</button>
+        <div class="form-main">
+            <div class="overlay"></div>
+            <form action="" class="form">
+                <div class="close">
+                    <img src="./ressets/img/icon-close.svg" alt="" />
+                </div>
+                <div class="logo">
+                    <a href="https://dantri.com.vn/" target="_blank">
+                        <img src="./ressets/img/logo-dantri.png" alt="" />
+                    </a>
+                </div>
+                <div class="login-register">
+                    <button class="login" type="button">Đăng nhập</button>
+                    <button class="register" type="button">Đăng ký</button>
+                </div>
+
+                <!-- Header Login -->
+                <div class="header-login">
+                    <div class="desc">
+                        <span>với các tài khoản mạng xã hội</span>
+                    </div>
+                    <div class="google-facebook">
+                        <button class="social-media" type="button">
+                            <img src="./ressets/img/google-dantri.svg" alt="" />
+                            Google
+                        </button>
+                        <button class="social-media" type="button">
+                            <img
+                                src="./ressets/img/facebook-dantri.svg"
+                                alt=""
+                            />
+                            Facebook
+                        </button>
+                    </div>
+                    <div class="between">
+                        <div class="through-line"></div>
+                        <span class="desc">hoặc</span>
+                    </div>
+                    <span class="result-login"></span>
+                    <div class="information-login">
+                        <div class="input-information-login">
+                            <label for="login-email">Email</label>
+                            <input
+                                type="email"
+                                id="login-email"
+                                placeholder="Email"
+                            />
+                        </div>
+                        <span class="error-email"></span>
+                        <div class="input-information-login">
+                            <label for="login-password">Mật khẩu</label>
+                            <input
+                                type="password"
+                                id="login-password"
+                                placeholder="Mật khẩu"
+                            />
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <span class="error-password"></span>
+                        <div class="forget-password">
+                            <button class="btn-forget" type="button">
+                                Quên mật khẩu?
+                            </button>
+                        </div>
+                    </div>
+                    <div class="footer-login">
+                        <button class="btn-login" type="button">
+                            Đăng nhập
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Header Register -->
+                <div class="header-register">
+                    <div class="desc">
+                        <p>Hoàn thành đăng ký, và bắt đầu trải nghiệm ngay!</p>
+                    </div>
+                    <span class="result-register"></span>
+                    <div class="information-login">
+                        <div class="input-information-login">
+                            <label for="register-name">Họ và tên</label>
+                            <input
+                                type="email"
+                                id="register-name"
+                                placeholder="Họ và tên"
+                            />
+                        </div>
+                        <span class="error-name"></span>
+                        <div class="input-information-login">
+                            <label for="register-email">Email</label>
+                            <input
+                                type="email"
+                                id="register-email"
+                                placeholder="Email"
+                            />
+                        </div>
+                        <span class="error-email"></span>
+                        <div class="input-information-login">
+                            <label for="register-password">Mật khẩu</label>
+                            <input
+                                type="password"
+                                id="register-password"
+                                placeholder="Mật khẩu"
+                            />
+                            <i class="bi bi-eye eyeregister"></i>
+                        </div>
+                        <span class="error-password"></span>
+                    </div>
+                    <div class="register-term">
+                        <div class="desc">
+                            <p>
+                                Bằng cách đăng ký tài khoản, bạn cũng đồng thời
+                                chấp nhận mọi
+                                <a class="highlight-desc" href="#!">
+                                    điều kiện về qui định và chính sách của Dân
+                                    trí
+                                </a>
+                            </p>
+                        </div>
+                        <div class="footer-register">
+                            <button class="btn-register" type="button">
+                                Đăng ký
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- JavaScript -->
+
+        <script src="./ressets/js/login-account.js"></script>
+        <script src="./ressets/js/common.js"></script>
+        <script src="./ressets/js/login-form.js"></script>
+        <script src="./ressets/js/register-form.js"></script>
+    </body>
+</html>
