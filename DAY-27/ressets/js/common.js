@@ -24,7 +24,7 @@ var resetForm = function (inputElement, error) {
         inputElement.parentElement.classList.remove("color");
 
         resultLogin.innerText = "";
-        resultLogin.classList.remove("result");
+        resultLogin.classList.remove("unsuccess");
         resultRegister.innerText = "";
         resultRegister.classList.remove("success");
     }

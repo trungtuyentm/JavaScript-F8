@@ -257,8 +257,10 @@ buttonRegister.addEventListener("click", function () {
         checkEmail(inputEmailRegister.value) &&
         inputPasswordRegister.value.length >= 6
     ) {
-        resultRegister.innerText = "Đăng ký thành công";
-        resultRegister.classList.add("success");
+        setTimeout(function () {
+            resultRegister.innerText = "Đăng ký thành công";
+            resultRegister.classList.add("success");
+        }, 500);
         setTimeout(function () {
             resetForm(inputNameRegister, errorName);
             resetForm(inputEmailRegister, errorEmailRegister);

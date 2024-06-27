@@ -142,7 +142,9 @@ buttonLogin.addEventListener("click", function () {
         inputPasswordLogin.parentElement.classList.add("color");
     }
     if (checkEmail(inputEmailLogin.value) && inputPasswordLogin.value) {
-        resultLogin.innerText = "Account not existed";
-        resultLogin.classList.add("unsuccess");
+        setTimeout(function () {
+            resultLogin.innerText = "Account not existed";
+            resultLogin.classList.add("unsuccess");
+        }, 500);
     }
 });
