@@ -8,6 +8,7 @@ function addTask(prevent) {
     var inputData = input.value.trim();
     if (inputData === "") {
         alert("Vui lòng nhập nội dung !");
+        return;
     } else {
         data.innerHTML += `
         <li>
@@ -47,7 +48,6 @@ function addTask(prevent) {
         value.addEventListener("click", function () {
             items[index].style.visibility = "hidden";
             forms[index].style.display = "flex";
-            inputEdits[index].value = spans[index].innerHTML;
         });
         btnEdits[index].addEventListener("click", function () {
             items[index].style.visibility = "visible";

@@ -5,6 +5,7 @@
 :root {
     --primary--color: #fff;
     --second--color: #8758ffbd;
+    --background--color: #1a1a40;
 }
 html {
     font-size: 62.5%;
@@ -23,7 +24,7 @@ body {
 }
 .todos-app {
     margin: auto;
-    background: #1a1a40;
+    background: var(--background--color);
     border-radius: 5px;
     padding: 4rem 3.5rem 3rem;
     min-width: 445px;
@@ -56,6 +57,7 @@ h1 {
 .input-content:focus {
     border-radius: none;
     border: 1px solid var(--second--color);
+    background: #ffffff14;
 }
 .btn,
 .btn-edits {
@@ -70,6 +72,29 @@ h1 {
     padding: 0.55rem;
     font-weight: 500;
     font-family: inherit;
+}
+.btn:hover,
+.btn-edits:hover {
+    background: #6043b2;
+}
+
+.list-item {
+    overflow: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+.list-item::-webkit-scrollbar {
+    width: 10px;
+}
+.list-item::-webkit-scrollbar-track {
+    background: var(--primary--color);
+    border-radius: 5px;
+}
+.list-item::-webkit-scrollbar-thumb {
+    background: #1a1a40;
+    opacity: 1.2;
+    border-radius: 5px;
+    border: 1px solid #44407c;
 }
 
 /* For JS */
@@ -116,7 +141,9 @@ ul li i {
 ul li i:last-child {
     right: 20px;
 }
-
+ul li i:hover {
+    color: red;
+}
 ul li .items.hide {
     display: none;
 }
