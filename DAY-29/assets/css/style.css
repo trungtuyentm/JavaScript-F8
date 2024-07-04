@@ -44,12 +44,12 @@ img {
 /* For JS */
 .circle-block {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
     display: flex;
-    column-gap: 15px;
+    column-gap: 25px;
 }
 .circle {
     display: inline-block;
@@ -60,5 +60,5 @@ img {
 }
 
 .circle-block .circle.active {
-    background: yellow;
+    background: rgba(255, 115, 0, 0.895);
 }
