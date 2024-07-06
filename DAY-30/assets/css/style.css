@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+ul,
+ol {
+    list-style: none;
+}
+
+/* Information song */
+.player {
+    display: flex;
+    height: 100vh;
+    background: #13275f;
+}
+.box-player {
+    margin: auto;
+    background: #130251;
+    width: 350px;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 1px #00000042;
+    color: #fff;
+}
+
+.current-song {
+    display: block;
+    font-size: 10px;
+}
+.name-song {
+    margin-top: 10px;
+    font-size: 30px;
+}
+.artist {
+    margin-top: 10px;
+    display: block;
+}
+
+/* Disk */
+.disk {
+    margin-top: 12px;
+}
+.disk-inner {
+    margin: 0 auto;
+    height: 250px;
+    width: 250px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 5px solid #0d286d;
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+.picture {
+    width: 100%;
+}
+
+/* Seek bar */
+.seek-bar {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.player .play-action {
+    text-align: center;
+    font-size: 1.2rem;
+}
+.player .play-action i {
+    cursor: pointer;
+}
+.player .play-timer {
+    gap: 10px;
+    margin-top: 10px;
+}
+.progress-bar {
+    width: 100%;
+    position: relative;
+    height: 10px;
+    background: gray;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.progress-bar:hover {
+    background: rgba(16, 202, 248, 0.736);
+}
+.progress-bar .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #cd6255;
+    border-radius: 10px;
+}
+.progress-bar .progress span {
+    position: absolute;
+    top: -1px;
+    right: -6px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: rgb(255, 150, 2);
+    border-radius: 50%;
+}
+.time {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* control */
+.control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    margin-top: 15px;
+}
+.previous,
+.next {
+    background: #cd6255;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    color: #fff;
+}
+.play {
+    background: #cd6255;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+}
+.play .fa-solid {
+    font-size: 2rem;
+    color: #fff;
+    padding: 20px;
+}
+
+/* KeyFrame */
+@keyframes pulse {
+    0% {
+        box-shadow: 0;
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(16, 53, 123, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 5px rgba(16, 53, 123, 0.8);
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* For JS */
+.disk-inner.play {
+    animation-play-state: running;
+    height: 250px;
+    width: 250px;
+}
