@@ -166,13 +166,14 @@ cartData.addEventListener("click", function (e) {
                     })
                 ].quantity = +input.value;
             } else {
-                listProductInCartData.findIndex(function (product) {
-                    listProductInCartData.splice(
-                        listProductInCartData.findIndex(function (product) {
-                            return +product.idProduct === +input.id;
-                        })
-                    );
+                var indexRemove = listProductInCartData.findIndex(function (
+                    product
+                ) {
+                    return +product.idProduct === +input.id;
                 });
+                if (indexRemove >= 0) {
+                    listProductInCartData.splice(indexRemove, 1);
+                }
             }
         });
         alert("Cập nhật giỏ hàng thành công!");
