@@ -1,0 +1,73 @@
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+table,
+td,
+tr,
+th {
+    border: 1px solid #000;
+}
+
+.table-product {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+thead {
+    font-weight: bold;
+    text-align: center;
+}
+.table-product tr td:last-child input {
+    width: 96%;
+    text-align: center;
+}
+.table-product tr td:first-child {
+    text-align: center;
+}
+.table-product tr td:last-child {
+    text-align: center;
+}
+.table-product tr td:nth-child(2),
+.table-product tr td:nth-child(3) {
+    padding: 10px;
+}
+td > button {
+    width: 96%;
+    margin: 2px 0;
+    text-align: center;
+}
+tbody td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+h2 {
+    font-size: 2.5rem;
+    padding: 26px 0;
+    font-weight: bold;
+}
+
+/* In the Cart */
+.cart-data {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-data tr td:first-child,
+.cart-data tr td:last-child {
+    text-align: left;
+    padding-left: 10px;
+}
