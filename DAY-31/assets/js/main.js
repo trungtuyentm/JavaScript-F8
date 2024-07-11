@@ -34,7 +34,7 @@ listProduct.forEach(function (value, index) {
         <td>${value.price}</td>
         <td>
             <input type="number" min='0' value='1' />
-            <button>Thêm vào giỏ</button>
+            <button type='button'>Thêm vào giỏ</button>
         </td>
     </tr>
     `;
@@ -119,8 +119,8 @@ var showCartData = () => {
         </table>
         <hr>
         <div>
-            <button class='update-cart'>Cập nhật giỏ hàng</button>
-            <button class='delete-all-cart'>Xóa giỏ hàng</button>
+            <button class='update-cart' style='padding:8px'>Cập nhật giỏ hàng</button>
+            <button class='delete-all-cart' style='padding:8px'>Xóa giỏ hàng</button>
         </div>
         `;
 
