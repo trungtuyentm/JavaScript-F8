@@ -4,6 +4,7 @@
 }
 html {
     font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -19,7 +20,7 @@ table,
 td,
 tr,
 th {
-    border: 1px solid #000;
+    border: 2px solid #000;
 }
 
 .table-product {
@@ -68,6 +69,17 @@ h2 {
 }
 .cart-data tr td:first-child,
 .cart-data tr td:last-child {
-    text-align: left;
+    text-align: center;
+}
+
+.cart-data
+    tr
+    td:not(.cart-data tr td:first-child, .cart-data tr td:last-child) {
     padding-left: 10px;
+}
+.cart-data tfoot {
+    font-weight: bold;
+}
+hr {
+    margin-top: 10px;
 }

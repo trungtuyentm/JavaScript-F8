@@ -88,6 +88,7 @@ var showCartData = () => {
                     <td>
                         <input 
                             type='number' 
+                            style= 'width: 93% '
                             class= 'input-quantity-cart'
                             id="${product.idProduct}" 
                             value='${product.quantity}'
@@ -108,16 +109,17 @@ var showCartData = () => {
         });
 
         tableFooterCartData = `
-        <tfoot>
+            <tfoot>
                 <tr>
                     <td colspan='3'>Tổng</td>
-                    <td>${totalQuantity}</td>
-                    <td colspan='2'>${totalPrice}</td>
+                    <td style= 'text-align: center'>${totalQuantity}</td>
+                    <td colspan='2' style='translate:-18%'>${totalPrice}</td>
                 </tr>
             </tfoot>
         </table>
+        <hr>
         <div>
-            <button class='update-cart' style= 'margin-top: 10px'>Cập nhật giỏ hàng</button>
+            <button class='update-cart'>Cập nhật giỏ hàng</button>
             <button class='delete-all-cart'>Xóa giỏ hàng</button>
         </div>
         `;
