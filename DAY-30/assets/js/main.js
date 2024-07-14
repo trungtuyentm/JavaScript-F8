@@ -29,6 +29,7 @@ progressSpan.addEventListener("mousedown", function (e) {
     e.stopPropagation();
     initialClientX = e.clientX;
     lastMoveSpace = (audio.currentTime / audio.duration) * progressBarWidth;
+    moveSpace = lastMoveSpace; // Cập nhật moveSpace chính xác
     document.addEventListener("mousemove", handleDrag);
     document.addEventListener("mouseup", handleMouseUp);
     isDragging = true;
