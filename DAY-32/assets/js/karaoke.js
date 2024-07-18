@@ -868,40 +868,28 @@ audio.addEventListener("timeupdate", function () {
             ].endTime /
                 1000
     ) {
-        currentLyric = "Tên bài hát: BigCityBoi";
-        nextLyric = "Binz, Touliver";
-        firstLine.innerText = currentLyric;
-        secondsLine.innerText = nextLyric;
+        firstLine.innerText = "Tên bài hát: BigCityBoi";
+        secondsLine.innerText = "Binz, Touliver";
     } else {
-        lyrics.forEach(function (_, index) {
-            if (index % 2 === 0) {
-                var startTime = lyrics[index].words[0].startTime / 1000;
-                var endTime =
-                    index + 1 >= lyrics.length
-                        ? lyrics[index].words[lyrics[index].words.length - 1]
-                              .endTime / 1000
-                        : lyrics[index + 1].words[
-                              lyrics[index + 1].words.length - 1
-                          ].endTime / 1000;
+        for (var i = 0; i < lyrics.length; i += 2) {
+            var startTime = lyrics[i].words[0].startTime / 1000;
+            var endTime =
+                i + 1 < lyrics.length
+                    ? lyrics[i + 1].words[lyrics[i + 1].words.length - 1]
+                          .endTime / 1000
+                    : lyrics[i].words[lyrics[i].words.length - 1].endTime /
+                      1000;
 
-                if (startTime <= currentTime && currentTime <= endTime) {
-                    currentLyric = lyrics[index].words
-                        .map(function (word) {
-                            return word.data;
-                        })
-                        .join(" ");
-                    nextLyric =
-                        index + 1 >= lyrics.length
-                            ? ""
-                            : lyrics[index + 1].words
-                                  .map(function (word) {
-                                      return word.data;
-                                  })
-                                  .join(" ");
-                }
+            if (startTime <= currentTime && currentTime <= endTime) {
+                firstLine.innerText = lyrics[i].words
+                    .map((word) => word.data)
+                    .join(" ");
+                secondsLine.innerText =
+                    i + 1 < lyrics.length
+                        ? lyrics[i + 1].words.map((word) => word.data).join(" ")
+                        : "";
+                break;
             }
-            firstLine.innerText = currentLyric;
-            secondsLine.innerText = nextLyric;
-        });
+        }
     }
 });
