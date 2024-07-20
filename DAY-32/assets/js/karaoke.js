@@ -857,9 +857,132 @@ closeBtn.addEventListener("click", function () {
 });
 
 // Handle the song lyrics
-audio.addEventListener("timeupdate", function () {
-    var currentTime = audio.currentTime;
+// audio.addEventListener("timeupdate", function () {
+//     var currentTime = audio.currentTime;
 
+//     if (
+//         currentTime < lyrics[0].words[0].startTime / 1000 ||
+//         currentTime >
+//             lyrics[lyrics.length - 1].words[
+//                 lyrics[lyrics.length - 1].words.length - 1
+//             ].endTime /
+//                 1000
+//     ) {
+//         firstLine.innerText = "Tên bài hát: BigCityBoi";
+//         secondsLine.innerText = "Binz, Touliver";
+//     } else {
+//         for (var i = 0; i < lyrics.length; i += 2) {
+//             var startTime = lyrics[i].words[0].startTime / 1000;
+//             var endTime =
+//                 i + 1 < lyrics.length
+//                     ? lyrics[i + 1].words[lyrics[i + 1].words.length - 1]
+//                           .endTime / 1000
+//                     : lyrics[i].words[lyrics[i].words.length - 1].endTime /
+//                       1000;
+
+//             if (startTime <= currentTime && currentTime <= endTime) {
+//                 firstLine.innerText = lyrics[i].words
+//                     .map((word) => word.data)
+//                     .join(" ");
+//                 secondsLine.innerText =
+//                     i + 1 < lyrics.length
+//                         ? lyrics[i + 1].words.map((word) => word.data).join(" ")
+//                         : "";
+//                 break;
+//             }
+//         }
+//     }
+// });
+
+// audio.addEventListener("timeupdate", function () {
+//     var currentTime = audio.currentTime;
+
+//     if (
+//         currentTime < lyrics[0].words[0].startTime / 1000 ||
+//         currentTime >
+//             lyrics[lyrics.length - 1].words[
+//                 lyrics[lyrics.length - 1].words.length - 1
+//             ].endTime /
+//                 1000
+//     ) {
+//         firstLine.innerHTML = "Tên bài hát: BigCityBoi";
+//         secondsLine.innerHTML = "Binz, Touliver";
+//     } else {
+//         for (var i = 0; i < lyrics.length; i += 2) {
+//             var startTime = lyrics[i].words[0].startTime / 1000;
+//             var endTime =
+//                 i + 1 < lyrics.length
+//                     ? lyrics[i + 1].words[lyrics[i + 1].words.length - 1]
+//                           .endTime / 1000
+//                     : lyrics[i].words[lyrics[i].words.length - 1].endTime /
+//                       1000;
+
+//             if (startTime <= currentTime && currentTime <= endTime) {
+//                 updateLyricLineWithColor(
+//                     firstLine,
+//                     lyrics[i].words,
+//                     currentTime
+//                 );
+//                 updateLyricLineWithColor(
+//                     secondsLine,
+//                     lyrics[i + 1] ? lyrics[i + 1].words : [],
+//                     currentTime
+//                 );
+//                 break;
+//             }
+//         }
+//     }
+// });
+
+// function updateLyricLineWithColor(lineElement, words, currentTime) {
+//     lineElement.innerHTML = ""; // Xóa nội dung hiện tại
+
+//     words.forEach(function (word) {
+//         var span = document.createElement("span");
+//         span.innerText = word.data + " ";
+
+//         var wordStartTime = word.startTime / 1000;
+//         var wordEndTime = word.endTime / 1000;
+//         var duration = wordEndTime - wordStartTime;
+
+//         var wordProgress = 0;
+//         if (currentTime >= wordStartTime && currentTime <= wordEndTime) {
+//             // Tính toán progress theo hàm ease-out
+//             var progress = (currentTime - wordStartTime) / duration;
+//             wordProgress = 1 - Math.pow(1 - progress, 3); // Hàm ease-out (cubic)
+//         } else if (currentTime > wordEndTime) {
+//             wordProgress = 1; // Đã qua hết từ
+//         }
+
+//         if (wordProgress > 0) {
+//             span.style.color = "transparent";
+//             span.style.background = `linear(to right, red ${
+//                 wordProgress * 100
+//             }%, black ${wordProgress * 100}%)`;
+//             span.style.webkitBackgroundClip = "text";
+//             span.style.webkitTextFillColor = "transparent";
+//         } else {
+//             span.style.color = "black"; // Màu chữ chưa phát
+//         }
+
+//         lineElement.appendChild(span);
+//     });
+// }
+
+var audio = document.querySelector("audio");
+var firstLine = document.querySelector(".line-1");
+var secondsLine = document.querySelector(".line-2");
+var currentIndex;
+
+var requestId;
+audio.addEventListener("play", function () {
+    requestId = requestAnimationFrame(handleKaraoke);
+});
+audio.addEventListener("pause", function () {
+    cancelAnimationFrame(requestId);
+});
+function handleKaraoke() {
+    var currentTime = audio.currentTime;
     if (
         currentTime < lyrics[0].words[0].startTime / 1000 ||
         currentTime >
@@ -881,15 +1004,45 @@ audio.addEventListener("timeupdate", function () {
                       1000;
 
             if (startTime <= currentTime && currentTime <= endTime) {
-                firstLine.innerText = lyrics[i].words
-                    .map((word) => word.data)
-                    .join(" ");
-                secondsLine.innerText =
-                    i + 1 < lyrics.length
-                        ? lyrics[i + 1].words.map((word) => word.data).join(" ")
-                        : "";
+                appearWord(firstLine, lyrics[i].words, currentTime);
+                appearWord(
+                    secondsLine,
+                    lyrics[i + 1] ? lyrics[i + 1].words : [],
+                    currentTime
+                );
                 break;
             }
         }
     }
-});
+    requestId = requestAnimationFrame(handleKaraoke);
+}
+
+var appearWord = (lineElement, words, currentTime) => {
+    lineElement.innerHTML = "";
+
+    words.forEach(function (word) {
+        var span = document.createElement("span");
+        span.innerText = `${word.data} `;
+
+        var wordStartTime = word.startTime / 1000;
+        var wordEndTime = word.endTime / 1000;
+
+        var wordProgress = 0;
+        if (currentTime >= wordStartTime && currentTime <= wordEndTime) {
+            var progress = currentTime - wordStartTime;
+            wordProgress = 1 - Math.pow(1 - progress, 3);
+        } else if (currentTime > wordEndTime) {
+            wordProgress = 1;
+        }
+        if (wordProgress > 0) {
+            span.style.background = `linear-gradient(to right, yellow ${
+                wordProgress * 100
+            }%, white ${wordProgress * 100}%)`;
+            span.style.webkitBackgroundClip = "text";
+            span.style.webkitTextFillColor = "transparent";
+        } else {
+            span.style.color = "white";
+        }
+        lineElement.append(span);
+    });
+};
