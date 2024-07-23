@@ -8,12 +8,12 @@ items.forEach(function (item) {
     });
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
-        render2();
+        updateListItems(true);
     });
 });
 
 // Updates the display text of list items
-function render() {
+function updateListItems(replace = false) {
     const subTask = Array.from(
         list.querySelectorAll(".list-item:not(.active)")
     );
@@ -21,30 +21,21 @@ function render() {
     topic.forEach(function (task, index) {
         var span = task.firstChild;
         const textNode = document.createTextNode(`Module ${index + 1}:`);
-        task.insertBefore(textNode, span);
+        if (replace) {
+            task.replaceChild(textNode, span);
+        } else {
+            task.insertBefore(textNode, span);
+        }
     });
-    subTask.forEach(function (task, index) {
-        var span = task.firstChild;
-        const textNode = document.createTextNode(`Bài ${index + 1}:`);
-        task.insertBefore(textNode, span);
-    });
-}
 
-// Update the text of list items after rearranging
-function render2() {
-    const subTask = Array.from(
-        list.querySelectorAll(".list-item:not(.active)")
-    );
-    const topic = Array.from(list.querySelectorAll(".list-item.active"));
-    topic.forEach(function (task, index) {
-        var span = task.firstChild;
-        const textNode = document.createTextNode(`Module ${index + 1}:`);
-        task.replaceChild(textNode, span);
-    });
     subTask.forEach(function (task, index) {
         var span = task.firstChild;
         const textNode = document.createTextNode(`Bài ${index + 1}:`);
-        task.replaceChild(textNode, span);
+        if (replace) {
+            task.replaceChild(textNode, span);
+        } else {
+            task.insertBefore(textNode, span);
+        }
     });
 }
 
@@ -63,11 +54,11 @@ const initSortableList = (e) => {
     } else {
         list.appendChild(draggingItem);
     }
-    render2();
+    updateListItems(true);
 };
 
 list.addEventListener("dragover", initSortableList);
 list.addEventListener("dragenter", function (e) {
     e.preventDefault();
 });
-render();
+updateListItems();
