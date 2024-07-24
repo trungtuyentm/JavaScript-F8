@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.doc-editor-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+/* Heading */
+.heading {
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    height: 38px;
+}
+.controls-left {
+    display: flex;
+    column-gap: 10px;
+}
+.dropdown {
+    position: relative;
+}
+.dropdown .file-btn {
+    height: 100%;
+    width: 64px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 1.7rem;
+    transition: 0.2s ease-in-out;
+}
+.dropdown .file-btn:hover {
+    background: #0b5ed7;
+}
+.dropdown .file-btn > i {
+    font-size: 1.4rem;
+}
+.dropdown .menu {
+    display: none;
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate3d(0px, 40px, 0px);
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    overflow: hidden;
+}
+.menu button {
+    background: #fff;
+    border: none;
+    width: 160px;
+    height: 32px;
+    z-index: 99;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+.menu button:hover {
+    background: #f7f6f6;
+}
+.title input {
+    height: 100%;
+    width: 120%;
+    padding-left: 10px;
+    font-size: 1.7rem;
+}
+
+.controls-right {
+    display: flex;
+    column-gap: 8px;
+}
+.controls-right button {
+    width: 50px;
+    background: #212529;
+    color: #fff;
+    font-size: 1.7rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.controls-right button:hover {
+    opacity: 0.85;
+}
+.controls-right .bold-btn {
+    font-weight: bold;
+}
+.controls-right .underline-btn {
+    text-decoration: underline;
+}
+.controls-right .italic-btn {
+    font-family: italic;
+    font-weight: 600;
+}
+.controls-right #color {
+    height: 100%;
+    width: 50px;
+    /* background: transparent; */
+    cursor: pointer;
+}
+/* Input data */
+#content {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    margin: 30px 0;
+    min-height: 300px;
+    outline: none;
+    padding: 20px;
+    cursor: text;
+}
+
+/* Count the number of words */
+.count {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 1.5rem;
+}
+
+/* For JS */
+.dropdown .menu.show {
+    display: block;
+}
