@@ -70,7 +70,7 @@ pdfBtn.addEventListener("click", function () {
 
 // Update character & word count
 writingArea.addEventListener("input", function () {
-    var total = writingArea.innerText;
+    var total = writingArea.innerText.replace(/\n/g, " ");
     var character = total.split("").filter(function (item) {
         return item.trim() !== "";
     });
