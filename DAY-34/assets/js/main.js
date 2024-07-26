@@ -69,14 +69,25 @@ pdfBtn.addEventListener("click", function () {
 });
 
 // Update character & word count
-writingArea.addEventListener("input", function () {
-    var total = writingArea.innerText.replace(/\n/g, " ");
-    var character = total.split("").filter(function (item) {
-        return item.trim() !== "";
-    });
-    var word = total.split(" ").filter(function (item) {
-        return item.trim() !== "";
-    });
+const updateCounts = () => {
+    var total = writingArea.innerText;
+    var character = total.split("");
+    var word = total
+        .trim()
+        .split(/\s+/)
+        .filter(function (item) {
+            return item.trim() !== "";
+        });
     characterCount.innerText = `${character.length}`;
     wordCount.innerText = `${word.length}`;
+};
+
+writingArea.addEventListener("input", updateCounts);
+
+// Handle the 'paste' event to paste only plain text
+writingArea.addEventListener("paste", function (e) {
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData("text");
+    document.execCommand("insertText", false, text);
+    updateCounts();
 });
