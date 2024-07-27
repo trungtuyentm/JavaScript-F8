@@ -39,11 +39,11 @@ h2 {
     background: transparent;
     border: 1px solid #fff;
     border-radius: 99px;
-    color: #fff;
+    color: #808080;
     cursor: pointer;
     padding: 10px 25px;
 }
 .btn:disabled {
-    background: #ccc;
+    background: #b6b6b6;
     cursor: not-allowed;
 }
