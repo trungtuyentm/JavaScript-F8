@@ -9,6 +9,7 @@ class F8 {
                     super();
                     this.attachShadow({ mode: "open" });
                     this.state = options.data ? options.data() : {};
+                    this.textNodes = {};
                     this.render();
                 }
 
@@ -18,13 +19,24 @@ class F8 {
                     template.innerHTML = options.template.replace(
                         /\{\{(.*?)\}\}/g,
                         (_, key) => {
-                            return this.state[key.trim()];
+                            return `<span data-key="${key.trim()}">
+                            ${this.state[key.trim()]}
+                            </span>`;
                         }
                     );
                     this.shadowRoot.innerHTML = "";
                     this.shadowRoot.appendChild(
                         template.content.cloneNode(true)
                     );
+
+                    // Save references to the text nodes
+                    this.shadowRoot
+                        .querySelectorAll("[data-key]")
+                        .forEach((node) => {
+                            const key = node.getAttribute("data-key");
+                            this.textNodes[key] = node;
+                        });
+
                     this.addEventListeners();
                 }
 
@@ -37,7 +49,7 @@ class F8 {
                                 const method =
                                     button.getAttribute("v-on:click");
                                 this.executeMethod(method);
-                                this.render();
+                                this.updateTextNodes();
                             });
                         }
                         if (button.hasAttribute("v-on:dblclick")) {
@@ -45,9 +57,16 @@ class F8 {
                                 const method =
                                     button.getAttribute("v-on:dblclick");
                                 this.executeMethod(method);
-                                this.render();
+                                this.updateTextNodes();
                             });
                         }
+                    });
+                }
+
+                // Update only the text nodes that have changed
+                updateTextNodes() {
+                    Object.keys(this.textNodes).forEach((key) => {
+                        this.textNodes[key].textContent = this.state[key];
                     });
                 }
 
