@@ -10,10 +10,15 @@ html {
 body {
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
-    color: #fff;
 }
 .container {
     padding: 30px 50px;
+}
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 30px;
 }
 #search-form {
     width: 30%;
@@ -24,8 +29,8 @@ body {
     width: 100%;
     font-size: 1.5rem;
     padding: 10px 50px 10px 15px;
-    border: 2px solid #ccc;
-    border-radius: 2px;
+    border: 2px solid #6bb1e6;
+    border-radius: 8px;
 }
 #search-form button {
     position: absolute;
@@ -40,4 +45,51 @@ body {
 
 #search-form button i {
     font-size: 1.8rem;
+}
+
+/* For JS */
+.status {
+    display: none;
+    margin-top: 50px;
+}
+h2 {
+    text-align: center;
+}
+.status-indicator {
+    background: red;
+    width: 70px;
+    height: 70px;
+    border-radius: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.status.show {
+    display: block;
+}
+.status-indicator i {
+    color: #fff;
+    font-size: 3rem;
+}
+@keyframes affect {
+    0% {
+        scale: 1.2;
+    }
+    25% {
+        scale: 1.4;
+    }
+    50% {
+        scale: 1.6;
+    }
+    75% {
+        scale: 1.4;
+    }
+    100% {
+        scale: 1.2;
+    }
+}
+.status-indicator {
+    animation: affect 1s linear infinite;
 }

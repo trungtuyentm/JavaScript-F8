@@ -11,6 +11,8 @@ if (speechRecognition) {
     );
     const micBtn = document.querySelector("button");
     const micIcon = document.querySelector("i");
+    const status = document.querySelector(".status");
+
     const recognition = new speechRecognition();
     recognition.lang = "vi-VN";
 
@@ -25,15 +27,16 @@ if (speechRecognition) {
 
     recognition.addEventListener("start", startSpeechRecognition);
     function startSpeechRecognition() {
-        console.log("active");
         micIcon.classList.remove("fa-microphone");
         micIcon.classList.add("fa-microphone-slash");
+        status.classList.add("show");
         searchFormInput.focus();
     }
     recognition.addEventListener("end", endSpeechRecognition);
     function endSpeechRecognition() {
         micIcon.classList.remove("fa-microphone-slash");
         micIcon.classList.add("fa-microphone");
+        status.classList.remove("show");
         searchFormInput.focus();
     }
 
@@ -43,6 +46,7 @@ if (speechRecognition) {
         const transcript = e.results[0][0].transcript.trim().toLowerCase();
         searchFormInput.value = transcript;
 
+        // Keyword
         const urlWeb = {
             google: "https://www.google.com/",
             facebook: "https://www.facebook.com/",
@@ -56,10 +60,13 @@ if (speechRecognition) {
             "tới",
             "đường tới",
             "chỉ đường tới",
+            "đi vô",
+            "đi vào",
         ];
         const songKeywords = ["bài hát", "mở bài hát", "nghe bài hát"];
         const videoKeywords = ["video", "mở video", "xem video"];
 
+        // Handle keyword
         let matchedDirectionKeyword = directionKeywords.find((keyword) =>
             transcript.includes(keyword)
         );
@@ -122,7 +129,7 @@ if (speechRecognition) {
         else {
             if (
                 confirm(
-                    "Không thực hiện được yêu cầu do là thông tin mật. Bạn có muốn tìm kiếm với tư cách admin không?"
+                    "Không thực hiện được yêu cầu do là thông tin mật. Để tránh người khác nghe thấy bạn hãy nhập thông tin bạn cần tìm kiếm hoặc Bạn có muốn tìm kiếm giọng nói với tư cách admin không?"
                 )
             ) {
                 const password = prompt(
