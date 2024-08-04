@@ -127,25 +127,25 @@ if (speechRecognition) {
 
         // Secret information. Requires administrator level access
         else {
-            if (
-                confirm(
-                    "Không thực hiện được yêu cầu do là thông tin mật. Để tránh người khác nghe thấy bạn hãy nhập thông tin bạn cần tìm kiếm hoặc Bạn có muốn tìm kiếm giọng nói với tư cách admin không?"
-                )
-            ) {
-                const password = prompt(
-                    "Nhập mật khẩu để tìm kiếm với tư cách admin (MK: 999):",
-                    ""
-                );
-                if (password === "999") {
-                    setTimeout(() => {
+            setTimeout(() => {
+                if (
+                    confirm(
+                        "Không thực hiện được yêu cầu do là thông tin mật. Để tránh người khác nghe thấy bạn hãy nhập thông tin bạn cần tìm kiếm hoặc Bạn có muốn tìm kiếm giọng nói với tư cách admin không?"
+                    )
+                ) {
+                    const password = prompt(
+                        "Nhập mật khẩu để tìm kiếm với tư cách admin (MK: 999):",
+                        ""
+                    );
+                    if (password === "999") {
                         searchForm.submit();
-                    }, 1000);
+                    } else {
+                        alert("Mật khẩu không chính xác. Yêu cầu đã bị hủy.");
+                    }
                 } else {
-                    alert("Mật khẩu không chính xác. Yêu cầu đã bị hủy.");
+                    alert("Yêu cầu đã bị hủy.");
                 }
-            } else {
-                alert("Yêu cầu đã bị hủy.");
-            }
+            }, 1000);
         }
     }
 }

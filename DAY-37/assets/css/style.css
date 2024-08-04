@@ -17,6 +17,8 @@ body {
     background: #00507b;
 }
 h1 {
+    padding-top: 20px;
+    padding-bottom: 10px;
     text-align: center;
     font-size: 3.5rem;
     font-weight: 500;
