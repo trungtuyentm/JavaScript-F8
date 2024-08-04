@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+}
+.container {
+    padding: 30px 50px;
+}
+#search-form {
+    width: 30%;
+    margin: 0 auto;
+    position: relative;
+}
+#search-form input {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 10px 50px 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+}
+#search-form button {
+    position: absolute;
+    width: 35px;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#search-form button i {
+    font-size: 1.8rem;
+}
