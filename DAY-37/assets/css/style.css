@@ -12,13 +12,16 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 .container {
+    height: 100vh;
     padding: 30px 50px;
+    background: #00507b;
 }
 h1 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 500;
     margin-bottom: 30px;
+    color: #fff;
 }
 #search-form {
     width: 30%;
@@ -64,10 +67,11 @@ h2 {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 .status.show {
     display: block;
+    color: #fff;
 }
 .status-indicator i {
     color: #fff;
