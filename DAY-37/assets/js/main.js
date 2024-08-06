@@ -148,4 +148,14 @@ if (speechRecognition) {
             }, 1000);
         }
     }
+
+    // The user does not grant access to the microphone
+    recognition.addEventListener("error", errorSpeechRecognition);
+    function errorSpeechRecognition(e) {
+        if (e.error === "not-allowed" || e.error === "permission-denied") {
+            alert(
+                "Truy cập micro bị từ chối. Vui lòng cấp quyền truy cập micro để sử dụng chức năng này."
+            );
+        }
+    }
 }
