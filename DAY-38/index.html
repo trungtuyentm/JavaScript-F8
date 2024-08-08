@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Smatyx Todos</title>
+        <!-- Embed Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon_io/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
+
+        <!-- FontAwesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+
+        <!-- Reset CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Style -->
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="container-inner">
+                <div class="heading">
+                    <h1>
+                        <span class="text-smatyx">Smatyx</span>
+                        <span class="text-todos-app">Todos App</span>
+                    </h1>
+                </div>
+                <div class="main">
+                    <div class="add-todos">
+                        <div class="search">
+                            <input
+                                type="text"
+                                name=""
+                                id="input-search"
+                                placeholder="Search Todos"
+                            />
+                            <button class="btn-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                        <button class="btn-add-todos">Add Todos</button>
+                    </div>
+                    <div class="display-task">
+                        <div class="list-task"></div>
+                        <button class="btn-completed">
+                            Completed Todos 1
+                            <i class="fa-regular fa-circle-down"></i>
+                        </button>
+                        <div class="completed"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="task-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 class="modal-title">Add New Task</h2>
+                <!-- Tiêu đề modal động -->
+                <input
+                    type="text"
+                    id="new-task-name"
+                    placeholder="Enter task name"
+                />
+                <div class="modal-buttons">
+                    <button id="btn-ok" class="btn-ok">Okay</button>
+                    <button id="btn-cancel" class="btn-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>

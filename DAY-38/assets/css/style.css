@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+:root {
+    --color-green-dark: #065f46;
+    --color-red-dark: #9f1239;
+    --color-blue-dark: #1e40af;
+}
+html {
+    font-size: 62.5%;
+    font-family: "Nunito", sans-serif;
+}
+body {
+    font-size: 1.6rem;
+}
+.container {
+    height: 100vh;
+    display: flex;
+}
+.container-inner {
+    margin: auto;
+    width: 735px;
+}
+
+/* Common Button Styles */
+button {
+    cursor: pointer;
+}
+
+/* Heading */
+.heading {
+    padding-top: 20px;
+    text-align: center;
+}
+.heading span {
+    font-size: 3.6rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+}
+.heading .text-smatyx {
+    color: transparent;
+    text-align: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(to right, #60a5fa, #059669);
+}
+
+/* Main Section */
+.main {
+    margin-top: 45px;
+}
+.add-todos {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    width: 100%;
+}
+.search {
+    position: relative;
+    width: 100%;
+}
+.add-todos #input-search {
+    width: 100%;
+    height: 55px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem;
+}
+.add-todos #input-search::placeholder {
+    font-size: 1.6rem;
+}
+.add-todos .btn-search {
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    border-radius: 0.8rem;
+    border: none;
+    background: #1d4ed8;
+    color: #fff;
+}
+.add-todos .btn-add-todos {
+    min-width: 110px;
+    padding: 1.2rem 1rem;
+    border-radius: 0.8rem;
+    border: none;
+    background: #047857;
+    color: #fff;
+    font-size: 100%;
+    font-weight: 500;
+}
+
+/* Task Display */
+.display-task {
+    margin-top: 2.5rem;
+}
+.display-task .list-task .task,
+.display-task .completed .task {
+    width: 100%;
+    height: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-right: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem;
+    margin-top: 10px;
+}
+.display-task .list-task .task span,
+.display-task .completed .task span {
+    font-weight: 400;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 100%;
+}
+.display-task .controls {
+    display: flex;
+    column-gap: 0.8rem;
+}
+.display-task .controls button {
+    height: 40px;
+    width: 40px;
+    border-radius: 0.8rem;
+    border: none;
+    font-size: 1.6rem;
+}
+
+/* Task Controls */
+.display-task .controls .btn-delete {
+    background: #be123c;
+    color: #fff;
+}
+.display-task .controls .btn-edit {
+    background: #1d4ed8;
+    color: #fff;
+}
+.display-task .controls .btn-done {
+    background: #9ca3af;
+    color: #fff;
+}
+
+/* Completed Button */
+.btn-completed {
+    margin-top: 1rem;
+    font-size: 100%;
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.8rem;
+    background: #047857;
+    color: #fff;
+    font-weight: 500;
+    font-family: "Nunito", sans-serif;
+    border: none;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+.modal-buttons {
+    margin-top: 1rem;
+}
+.modal-buttons button {
+    margin: 0 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+.btn-ok {
+    background: #047857;
+    color: #fff;
+}
+.btn-cancel {
+    background: #9ca3af;
+    color: #fff;
+}
+.hidden {
+    display: none;
+}
+
+/* Hover Effects */
+.btn-add-todos:hover {
+    background: var(--color-green-dark);
+}
+.display-task .controls .btn-delete:hover {
+    background: var(--color-red-dark);
+}
+.display-task .controls .btn-edit:hover {
+    background: var(--color-blue-dark);
+}
+.display-task .controls .btn-done:hover {
+    background: var(--color-green-dark);
+}
+.main .btn-completed:hover {
+    background: var(--color-green-dark);
+}
+
+/* FOR JS */
+
+.btn-completed i.rotate {
+    rotate: -90deg;
+}
+.btn-completed.bg {
+    background: #ccc;
+}
