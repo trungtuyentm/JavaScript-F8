@@ -1,4 +1,3 @@
-// API URL
 const apiUrl = "https://l9r3pr-8080.csb.app/users";
 
 // Add a new task
@@ -12,7 +11,7 @@ export async function addTask(taskName) {
             body: JSON.stringify({ name: taskName, completed: false }),
         });
         if (response.ok) {
-            fetchTasks(); // Refresh tasks after adding
+            fetchTasks();
         } else {
             console.error("Error adding task:", await response.text());
         }
@@ -32,7 +31,7 @@ export async function editTask(id, newName) {
             body: JSON.stringify({ name: newName }),
         });
         if (response.ok) {
-            fetchTasks(); // Refresh tasks after editing
+            fetchTasks();
         } else {
             console.error("Error editing task:", await response.text());
         }
@@ -48,7 +47,7 @@ export async function deleteTask(id) {
             method: "DELETE",
         });
         if (response.ok) {
-            fetchTasks(); // Refresh tasks after deleting
+            fetchTasks();
         } else {
             console.error("Error deleting task:", await response.text());
         }
@@ -68,12 +67,35 @@ export async function markTaskAsDone(id) {
             body: JSON.stringify({ completed: true }),
         });
         if (response.ok) {
-            fetchTasks(); // Refresh tasks after marking as done
+            fetchTasks();
         } else {
             console.error("Error marking task as done:", await response.text());
         }
     } catch (error) {
         console.error("Error marking task as done:", error);
+    }
+}
+
+// Mark a task as undone
+export async function markTaskAsUndone(id) {
+    try {
+        const response = await fetch(`${apiUrl}/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ completed: false }),
+        });
+        if (response.ok) {
+            fetchTasks();
+        } else {
+            console.error(
+                "Error marking task as undone:",
+                await response.text()
+            );
+        }
+    } catch (error) {
+        console.error("Error marking task as undone:", error);
     }
 }
 
@@ -107,7 +129,9 @@ function renderTasks(tasks) {
                 <button class="btn-edit" data-id="${task.id}">
                     <i class="fa-regular fa-pen-to-square"></i>
                 </button>
-                <button class="btn-done" data-id="${task.id}">
+                <button class="btn-done ${
+                    task.completed ? "completed" : ""
+                }" data-id="${task.id}">
                     <i class="fa-regular fa-square-check"></i>
                 </button>
             </div>`;
@@ -148,30 +172,7 @@ function renderTasks(tasks) {
         }
     });
 
-    updateCompletedCount(); // Update completed count after rendering tasks
-}
-
-// Mark a task as undone
-export async function markTaskAsUndone(id) {
-    try {
-        const response = await fetch(`${apiUrl}/${id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ completed: false }),
-        });
-        if (response.ok) {
-            fetchTasks(); // Refresh tasks after marking as undone
-        } else {
-            console.error(
-                "Error marking task as undone:",
-                await response.text()
-            );
-        }
-    } catch (error) {
-        console.error("Error marking task as undone:", error);
-    }
+    updateCompletedCount();
 }
 
 // Update the completed count on the button
@@ -188,5 +189,4 @@ async function updateCompletedCount() {
     }
 }
 
-// Export functions
 export { fetchTasks, renderTasks };

@@ -3,6 +3,7 @@ import {
     editTask,
     deleteTask,
     markTaskAsDone,
+    markTaskAsUndone,
     fetchTasks,
 } from "./handleTask.js";
 
@@ -15,33 +16,35 @@ const newTaskNameInput = document.getElementById("new-task-name");
 const btnOk = document.getElementById("btn-ok");
 const btnCancel = document.getElementById("btn-cancel");
 
-let editMode = false; // Biến để kiểm tra xem có đang chỉnh sửa task không
-let editTaskId = null; // Biến để lưu ID của task đang được chỉnh sửa
+let editMode = false;
+let editTaskId = null;
 
 // Event listeners
 btnAddTodos.addEventListener("click", () => {
     taskModal.classList.remove("hidden");
     newTaskNameInput.value = "";
     newTaskNameInput.focus();
-    editMode = false; // Chế độ thêm mới
+    editMode = false;
 });
 
 btnOk.addEventListener("click", () => {
     const taskName = newTaskNameInput.value.trim();
     if (taskName) {
         if (editMode) {
-            editTask(editTaskId, taskName); // Chỉnh sửa task
+            editTask(editTaskId, taskName);
         } else {
-            addTask(taskName); // Thêm mới task
+            addTask(taskName);
         }
         taskModal.classList.add("hidden");
-        newTaskNameInput.value = ""; // Clear input
+        newTaskNameInput.value = "";
+        editMode = false; // Reset edit mode
     }
 });
 
 btnCancel.addEventListener("click", () => {
     taskModal.classList.add("hidden");
-    newTaskNameInput.value = ""; // Clear input
+    newTaskNameInput.value = "";
+    editMode = false; // Reset edit mode
 });
 
 btnCompleted.addEventListener("click", () => {
@@ -106,10 +109,10 @@ function renderTasks(tasks) {
                 editTaskId = event.target.closest("button").dataset.id;
                 const currentName = task.name;
 
-                newTaskNameInput.value = currentName;
+                newTaskNameInput.value = currentName; // Set input value to current task name
                 taskModal.classList.remove("hidden");
                 newTaskNameInput.focus();
-                editMode = true; // Chế độ chỉnh sửa
+                editMode = true; // Enable edit mode
             });
 
         taskElement
@@ -131,5 +134,5 @@ function renderTasks(tasks) {
         }
     });
 
-    updateCompletedCount(); // Update completed count after rendering tasks
+    updateCompletedCount();
 }

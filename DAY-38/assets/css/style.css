@@ -226,3 +226,20 @@ button {
 .btn-completed.bg {
     background: #ccc;
 }
+
+.btn-done.completed {
+    color: white;
+    background-color: green;
+}
+
+.btn-done {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-done.completed:hover {
+    background-color: darkgreen;
+}
