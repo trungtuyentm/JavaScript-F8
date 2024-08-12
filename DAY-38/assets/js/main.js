@@ -7,7 +7,6 @@ import {
     fetchTasks,
 } from "./handleTask.js";
 
-// DOM elements
 const inputSearch = document.getElementById("input-search");
 const btnAddTodos = document.querySelector(".btn-add-todos");
 const btnCompleted = document.querySelector(".btn-completed");
@@ -15,9 +14,19 @@ const taskModal = document.getElementById("task-modal");
 const newTaskNameInput = document.getElementById("new-task-name");
 const btnOk = document.getElementById("btn-ok");
 const btnCancel = document.getElementById("btn-cancel");
+const errorMessage = document.getElementById("error-message");
 
 let editMode = false;
 let editTaskId = null;
+
+// Open the modal to edit the task
+function openEditModal(taskId, currentName) {
+    editTaskId = taskId;
+    newTaskNameInput.value = currentName;
+    taskModal.classList.remove("hidden");
+    newTaskNameInput.focus();
+    editMode = true;
+}
 
 // Event listeners
 btnAddTodos.addEventListener("click", () => {
@@ -27,24 +36,38 @@ btnAddTodos.addEventListener("click", () => {
     editMode = false;
 });
 
-btnOk.addEventListener("click", () => {
+btnOk.addEventListener("click", async () => {
     const taskName = newTaskNameInput.value.trim();
     if (taskName) {
-        if (editMode) {
-            editTask(editTaskId, taskName);
-        } else {
-            addTask(taskName);
+        try {
+            if (editMode) {
+                await editTask(editTaskId, taskName);
+            } else {
+                await addTask(taskName);
+            }
+            taskModal.classList.add("hidden");
+            newTaskNameInput.value = "";
+            editMode = false;
+            errorMessage.classList.add("hidden");
+            await fetchTasks();
+        } catch (error) {
+            console.error("Error handling task:", error);
         }
-        taskModal.classList.add("hidden");
-        newTaskNameInput.value = "";
-        editMode = false; // Reset edit mode
+    } else {
+        errorMessage.classList.remove("hidden");
+    }
+});
+
+newTaskNameInput.addEventListener("input", () => {
+    if (newTaskNameInput.value !== "") {
+        errorMessage.classList.add("hidden");
     }
 });
 
 btnCancel.addEventListener("click", () => {
     taskModal.classList.add("hidden");
     newTaskNameInput.value = "";
-    editMode = false; // Reset edit mode
+    editMode = false;
 });
 
 btnCompleted.addEventListener("click", () => {
@@ -70,10 +93,8 @@ function filterTasks(query) {
     });
 }
 
-// Initialize
-fetchTasks();
-
-function renderTasks(tasks) {
+// Render tasks
+async function renderTasks(tasks) {
     const listTask = document.querySelector(".list-task");
     const completed = document.querySelector(".completed");
 
@@ -91,11 +112,14 @@ function renderTasks(tasks) {
                 <button class="btn-edit" data-id="${task.id}">
                     <i class="fa-regular fa-pen-to-square"></i>
                 </button>
-                <button class="btn-done" data-id="${task.id}">
+                <button class="btn-done ${
+                    task.completed ? "completed" : ""
+                }" data-id="${task.id}">
                     <i class="fa-regular fa-square-check"></i>
                 </button>
             </div>`;
 
+        // Handle task deletion event
         taskElement
             .querySelector(".btn-delete")
             .addEventListener("click", (event) => {
@@ -103,18 +127,16 @@ function renderTasks(tasks) {
                 deleteTask(id);
             });
 
+        // Handle the task editing event
         taskElement
             .querySelector(".btn-edit")
             .addEventListener("click", (event) => {
-                editTaskId = event.target.closest("button").dataset.id;
+                const id = event.target.closest("button").dataset.id;
                 const currentName = task.name;
-
-                newTaskNameInput.value = currentName; // Set input value to current task name
-                taskModal.classList.remove("hidden");
-                newTaskNameInput.focus();
-                editMode = true; // Enable edit mode
+                openEditModal(id, currentName);
             });
 
+        // Handle the event that marks task completion
         taskElement
             .querySelector(".btn-done")
             .addEventListener("click", (event) => {
@@ -134,5 +156,21 @@ function renderTasks(tasks) {
         }
     });
 
-    updateCompletedCount();
+    await updateCompletedCount();
 }
+
+// Update the completed count on the button
+async function updateCompletedCount() {
+    try {
+        const response = await fetch(apiUrl);
+        const tasks = await response.json();
+        const completedCount = tasks.filter((task) => task.completed).length;
+
+        const btnCompleted = document.querySelector(".btn-completed");
+        btnCompleted.innerHTML = `Completed Todos ${completedCount} <i class="fa-regular fa-circle-down"></i>`;
+    } catch (error) {
+        console.error("Error updating completed count:", error);
+    }
+}
+
+fetchTasks();

@@ -20,6 +20,35 @@ export async function addTask(taskName) {
     }
 }
 
+function openEditModal(taskId, currentName) {
+    const taskModal = document.getElementById("task-modal");
+    const newTaskNameInput = document.getElementById("new-task-name");
+    const btnOk = document.getElementById("btn-ok");
+    const errorMessage = document.getElementById("error-message");
+
+    newTaskNameInput.value = currentName;
+    taskModal.classList.remove("hidden");
+    newTaskNameInput.focus();
+
+    errorMessage.classList.add("hidden");
+
+    btnOk.onclick = function () {
+        const taskName = newTaskNameInput.value.trim();
+        if (taskName) {
+            editTask(taskId, taskName)
+                .then(() => {
+                    taskModal.classList.add("hidden");
+                    newTaskNameInput.value = "";
+                })
+                .catch((error) => {
+                    console.error("Error editing task:", error);
+                });
+        } else {
+            errorMessage.classList.remove("hidden");
+        }
+    };
+}
+
 // Edit an existing task
 export async function editTask(id, newName) {
     try {
@@ -31,7 +60,7 @@ export async function editTask(id, newName) {
             body: JSON.stringify({ name: newName }),
         });
         if (response.ok) {
-            fetchTasks();
+            await fetchTasks();
         } else {
             console.error("Error editing task:", await response.text());
         }
@@ -143,14 +172,12 @@ function renderTasks(tasks) {
                 deleteTask(id);
             });
 
+        // Handle task repair event
         taskElement
             .querySelector(".btn-edit")
             .addEventListener("click", (event) => {
                 const id = event.target.closest("button").dataset.id;
-                const newName = prompt("Edit the task:");
-                if (newName) {
-                    editTask(id, newName);
-                }
+                openEditModal(id, task.name);
             });
 
         taskElement

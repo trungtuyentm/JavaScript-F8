@@ -83,14 +83,12 @@
         <!-- Modal -->
         <div id="task-modal" class="modal hidden">
             <div class="modal-content">
-                <h2 class="modal-title">Add New Task</h2>
-                <input
-                    type="text"
-                    id="new-task-name"
-                    placeholder="Enter task name"
-                />
+                <input type="text" id="new-task-name" placeholder="Add Todos" />
+                <p id="error-message" class="error hidden">
+                    Job name cannot be empty!
+                </p>
                 <div class="modal-buttons">
-                    <button id="btn-ok" class="btn-ok">Okay</button>
+                    <button id="btn-ok" class="btn-ok">Save</button>
                     <button id="btn-cancel" class="btn-cancel">Cancel</button>
                 </div>
             </div>

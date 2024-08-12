@@ -168,26 +168,61 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999;
 }
 .modal-content {
     background: #fff;
     padding: 2rem;
     border-radius: 0.8rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 450px;
     text-align: center;
+    padding: 2.5rem;
+    position: relative;
+}
+.modal-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+#new-task-name {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 0.8rem;
+    padding-left: 1.5rem;
+}
+#new-task-name::placeholder {
+    font-size: 1.6rem;
+    color: #797777;
+}
+.modal-content .error {
+    padding-top: 10px;
+    color: red;
+}
+.error.hidden {
+    display: none;
 }
 .modal-buttons {
     margin-top: 1rem;
+    margin-top: 25px;
+}
+.modal-buttons::before {
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 100%;
+    background: #dbdada;
+    margin-bottom: 20px;
 }
 .modal-buttons button {
-    margin: 0 0.5rem;
+    margin: 0 1.5rem;
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 0.8rem;
     font-size: 1.6rem;
     cursor: pointer;
+    min-width: 75px;
+    height: 45px;
 }
 .btn-ok {
     background: #047857;
@@ -216,6 +251,12 @@ button {
 }
 .main .btn-completed:hover {
     background: var(--color-green-dark);
+}
+.btn-ok:hover {
+    background: var(--color-green-dark);
+}
+.btn-cancel:hover {
+    background: var(--color-red-dark);
 }
 
 /* FOR JS */
