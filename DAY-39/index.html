@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Infinity Scroll</title>
+        <!-- Embed Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- FontAwesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+
+        <!-- Reset CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon_io (9)/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon_io (9)/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon_io (9)/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon_io (9)/site.webmanifest" />
+
+        <!-- Style -->
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <div class="your-friend">
+            <header>
+                <nav class="heading">
+                    <div class="title">Friend</div>
+                    <div class="controls">
+                        <div class="search">
+                            <div class="icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <input
+                                type="text"
+                                name=""
+                                id=""
+                                placeholder="Search"
+                            />
+                        </div>
+                        <a href="#!" class="friend-request">Friend Request</a>
+                        <a href="#!" class="find-friends">Find friends</a>
+                        <span class="menu">
+                            <a href=""><i class="fa-solid fa-ellipsis"></i></a>
+                        </span>
+                    </div>
+                </nav>
+                <ul>
+                    <li><a href="#!">All friends</a></li>
+                    <li><a href="#!">Birthday</a></li>
+                    <li><a href="#!">High school</a></li>
+                    <li><a href="#!">Current Province/City</a></li>
+                    <li><a href="#!">Hometown</a></li>
+                    <li><a href="#!">Follower</a></li>
+                    <li>
+                        <a href="#!">
+                            Following <i class="fa-solid fa-caret-down"></i
+                        ></a>
+                    </li>
+                </ul>
+            </header>
+            <main>
+                <div id="loading"></div>
+                <section class="user-container"></section>
+            </main>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="./assets/js/main.js"></script>
+    </body>
+</html>

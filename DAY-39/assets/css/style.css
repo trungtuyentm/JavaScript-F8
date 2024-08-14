@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+:root {
+    --color-primary: #b4b6bb;
+    --color-second: #3a3b3c;
+    --color-tertiary: #e4e6eb;
+    --color-textActive: #0866ff;
+    --color-textActive2: #83bdff;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    background: #18191a;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* HEADER */
+.your-friend {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #242526;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+.heading .title {
+    font-size: 2.5rem;
+    color: var(--color-tertiary);
+    display: flex;
+    align-items: center;
+}
+.heading {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+.heading > span {
+    color: var(--color-tertiary);
+}
+.controls {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+.search {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: relative;
+}
+.search .icon {
+    position: absolute;
+    left: 10px;
+    color: var(--color-primary);
+}
+.controls input {
+    height: 100%;
+    width: 200px;
+    border-radius: 20px;
+    padding-left: 35px;
+    background: var(--color-second);
+    border: none;
+}
+.controls input::placeholder {
+    color: var(--color-primary);
+}
+.controls input:focus {
+    color: var(--color-tertiary);
+}
+.controls .friend-request,
+.controls .find-friends {
+    color: #83bdff;
+}
+.controls .menu {
+    padding: 10px 20px;
+    background: var(--color-second);
+    border-radius: 5px;
+}
+.controls .menu i {
+    color: var(--color-tertiary);
+}
+
+header ul {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+header > ul li {
+    padding: 20px 20px;
+    position: relative;
+    font-weight: 600;
+}
+header > ul li a {
+    color: var(--color-primary);
+}
+header > ul > li:first-child a {
+    color: var(--color-textActive);
+}
+header > ul > li:first-child:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    height: 3px;
+    background: var(--color-textActive);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+/* MAIN */
+#loading {
+    background: url("../img/Spinnercolor.gif") no-repeat center center;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    backdrop-filter: blur(8px);
+    display: none;
+}
+.user-container {
+    width: 95%;
+    margin: 20px auto;
+}
+.user-container .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 15px;
+    padding-right: 30px;
+    text-align: center;
+    border: 1px solid #2e2f30;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.user-logo {
+    flex: 0.6;
+}
+.user-name {
+    flex: 1;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.user-name a {
+    color: var(--color-tertiary);
+}
+.user-mutual {
+    flex: 1;
+}
+.user-messenger {
+    flex: 1;
+}
+.user-messenger a {
+    color: var(--color-tertiary);
+    font-size: 2.2rem;
+}
+.user .menu {
+    flex: 1;
+}
+.item {
+    align-self: center;
+    word-break: break-word;
+    color: var(--color-tertiary);
+}
+.user-container .user .user-logo img {
+    border-radius: 10%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    object-position: center center;
+}
+.user .menu {
+    padding: 10px 20px;
+    background: var(--color-second);
+    border-radius: 5px;
+    color: var(--color-tertiary);
+}
+#loading.show {
+    display: block;
+}
