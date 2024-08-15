@@ -34,9 +34,17 @@ const renderUser = (user) => {
 
 async function getRandomUser(pageNumber, pageSize) {
     let url = `https://l9r3pr-8080.csb.app/results?_page=${pageNumber}&_limit=${pageSize}`;
-    const resp = await fetch(url);
-    const data = await resp.json();
-    return data;
+    try {
+        const resp = await fetch(url);
+        if (!resp.ok) {
+            throw new Error(`HTTP error! status: ${resp.status}`);
+        }
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.error("Failed to fetch users", error);
+        return [];
+    }
 }
 
 const getLastUserEle = () =>
