@@ -80,6 +80,11 @@ nextBtn.addEventListener("click", function () {
 });
 
 const showQuestion = (index) => {
+    correctSound.pause();
+    correctSound.currentTime = 0;
+    incorrectSound.pause();
+    incorrectSound.currentTime = 0;
+
     const queTag = `<h2 class="que-number">${questions[index].id}. ${questions[index].question}</h2>`;
     const optionTag = questions[index].options
         .map((option) => `<div class="answer-btn">${option}</div>`)
