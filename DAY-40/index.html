@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz App</title>
+        <!-- FontAwesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon_io/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon_io/site.webmanifest" />
+
+        <!-- Embed Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Reset CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+
+        <!-- Style -->
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <div class="quiz-app">
+            <!-- Star Quiz Button -->
+            <div class="start-btn">
+                <button>Start Quiz</button>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <div class="info-title">
+                    <span>Some Rules of this Quiz</span>
+                </div>
+                <div class="info-list">
+                    <div class="info">
+                        1. You will have only <span>15 seconds</span> per each
+                        question.
+                    </div>
+                    <div class="info">
+                        2. Once you select your answer, it can't be undone.
+                    </div>
+                    <div class="info">
+                        3. You can't select any option once time goes off.
+                    </div>
+                    <div class="info">
+                        4. You can't exit from the Quiz while you are playing.
+                    </div>
+                    <div class="info">
+                        5. You'll get point on the basis of your correct answer.
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="quit">Exit Quiz</button>
+                    <button class="restart">Continue</button>
+                </div>
+            </div>
+
+            <!-- Quiz Box -->
+            <div class="quiz-box">
+                <header>
+                    <div class="title">Awesome Quiz Application</div>
+                    <div class="timer">
+                        <div class="time-left-text">Time Left</div>
+                        <div class="timer-sec">15</div>
+                    </div>
+                </header>
+                <div class="time-line"></div>
+                <section>
+                    <div class="que-text"></div>
+                    <div class="option-list"></div>
+                </section>
+
+                <!-- Footer of Quiz Box  -->
+                <footer>
+                    <div class="total-que"></div>
+                    <button class="next-btn">Next Que</button>
+                </footer>
+            </div>
+
+            <!-- Result Box -->
+            <div class="result-box">
+                <div class="icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="complete-text">You are complete the Quiz!</div>
+                <div class="score-text"></div>
+                <div class="buttons">
+                    <button class="replay">Replay Quiz</button>
+                    <button class="quit">Quit Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio -->
+        <audio
+            class="correct-sound"
+            src="./assets/mp3/correct-sound.mp3"
+        ></audio>
+        <audio
+            class="incorrect-sound"
+            src="./assets/mp3/incorrect-sound.mp3"
+        ></audio>
+        <audio
+            class="victory-sound"
+            src="./assets/mp3/victory-sound.mp3"
+        ></audio>
+        <audio
+            class="count-down-timer-sound"
+            src="./assets/mp3/countDownTimer-sound.mp3"
+        ></audio>
+
+        <!-- JavaScript -->
+        <script type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>

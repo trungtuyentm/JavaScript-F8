@@ -1,0 +1,34 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "Con gì có chân nhưng không biết đi?",
+            "answer": "Con nít",
+            "options": ["Con rắn", "Con người", "Con nít", "Con tàu"]
+        },
+        {
+            "id": 2,
+            "question": "Chim gì nặng 10kg?",
+            "answer": "Chim yến",
+            "options": ["Chim sơn ca", "Chim yến", "Chim sẻ", "Chim cú mèo"]
+        },
+        {
+            "id": 3,
+            "question": "Chiến thắng điện biên phủ vào năm nào?",
+            "answer": "Năm 1954",
+            "options": ["Năm 1945", "Năm 1954", "Năm 1960", "Năm 1999"]
+        },
+        {
+            "id": 4,
+            "question": "Tên ban đầu của JavaScript là gì",
+            "answer": "Mocha",
+            "options": ["Mocha", "Oak", "Zallo", "Oaklavat"]
+        },
+        {
+            "id": 5,
+            "question": "Cái gì có thân mà không có đầu, có tiếng mà không có miệng?",
+            "answer": "Cái bóng",
+            "options": ["Cái tủ lạnh", "Cái cây", "Cái bóng", "Cái nhà"]
+        }
+    ]
+}
