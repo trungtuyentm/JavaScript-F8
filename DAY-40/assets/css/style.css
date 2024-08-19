@@ -8,10 +8,8 @@ html {
 body {
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
-    background: #007bff;
-    /* height: 100vh;
-    height: 100vw;
-    display: flex; */
+    background-image: url("https://img.pikbest.com/wp/202344/abstract-art-painting-background-of-textured_9915565.jpg!sw800");
+    background-size: cover;
 }
 .quiz-app {
     display: flex;
@@ -23,14 +21,20 @@ body {
 
 .start-btn button {
     min-width: 180px;
-    font-size: 2.5rem;
+    font-size: 5rem;
     font-weight: 550;
-    color: #007bff;
+    color: #fff;
     padding: 15px 30px;
     border: none;
-    border-radius: 5px;
-    background: #fff;
+    border-radius: 10px;
+    background: #dc3c3c;
     cursor: pointer;
+    box-shadow: 2px 3px 57px 2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 3px 57px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 3px 57px 2px rgba(0, 0, 0, 0.75);
+}
+.start-btn button:hover {
+    opacity: 0.9;
 }
 .info-box {
     width: 550px;
@@ -81,7 +85,17 @@ body {
     border: 1px solid #007bff;
     transform: all 0.3s ease;
 }
-
+.info-box .buttons button.restart {
+    background: #007bff;
+    color: #fff;
+}
+.info-box .buttons button.restart:hover {
+    opacity: 0.9;
+}
+.info-box .buttons button.quit:hover {
+    background: #dc3c3c;
+    color: #fff;
+}
 .quiz-box {
     width: 550px;
     background: #fff;
@@ -161,6 +175,9 @@ section .option-list .answer-btn {
     margin-bottom: 15px;
     cursor: pointer;
 }
+section .option-list .answer-btn:hover {
+    background: #84eddfac;
+}
 section .option-list .answer-btn.correct {
     color: #155724;
     background: #d4edda;
@@ -200,6 +217,10 @@ footer .next-btn {
     border: 1px solid #007bff;
     line-height: 10px;
     display: none;
+}
+
+footer .next-btn:hover {
+    opacity: 0.9;
 }
 footer .next-btn.show {
     display: block;
@@ -250,6 +271,17 @@ footer .next-btn.show {
     border: none;
     border-radius: 5px;
     border: 1px solid #007bff;
+}
+.result-box .buttons button.replay {
+    background: #007bff;
+    color: #fff;
+}
+.result-box .buttons button.replay:hover {
+    opacity: 0.9;
+}
+.result-box .buttons button.quit:hover {
+    background: rgba(240, 15, 37, 0.808);
+    color: #fff;
 }
 
 .info-box,
