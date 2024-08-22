@@ -1,0 +1,519 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+:root {
+    --color-primary: #242526;
+    --color-second: #b8bbbf;
+    --color-background: #242526;
+    --color-text: #e4e6eb;
+    --color-line: #525457;
+    --color-background2: #18191a;
+}
+html {
+    font-size: 52.5%;
+}
+body {
+    font-size: 1.6rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    position: relative;
+}
+/* COMMON */
+button,
+a {
+    cursor: pointer;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    background: var(--color-primary);
+    padding: 10px 15px;
+    height: 55px;
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.logo a img {
+    width: 100%;
+    height: 100%;
+    border-radius: 99px;
+    border: none;
+}
+.logo .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.logo .search input {
+    height: 100%;
+    min-width: 250px;
+    border-radius: 99px;
+    border: none;
+    padding-left: 30px;
+    background: var(--color-line);
+}
+.logo .search input::placeholder {
+    color: var(--color-second);
+}
+.logo .search input:focus {
+    color: #fff;
+}
+.logo .search i {
+    position: absolute;
+    padding: 10px;
+    font-size: 14px;
+    color: var(--color-second);
+}
+.communicate {
+    margin-right: 100px;
+}
+.communicate > ul {
+    display: flex;
+    align-items: center;
+}
+.communicate ul li {
+    padding: 10px 45px;
+    color: var(--color-second);
+    font-size: 1.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.communicate ul li:hover {
+    background: var(--color-line);
+}
+nav .action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+nav button {
+    display: inline-block;
+    min-width: 20px;
+    padding: 5px 20px;
+    border-radius: 999px;
+    border: none;
+    height: 100%;
+    background: #ff621b;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: center;
+    background: rgb(51, 58, 50);
+    background: linear-gradient(
+        180deg,
+        rgb(42, 46, 42) 0%,
+        rgba(45, 49, 45, 1) 10%,
+        rgba(36, 37, 38, 1) 87%
+    );
+}
+header .container {
+    width: 945px;
+}
+header .cover img {
+    height: 350px;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center -250px;
+    border-radius: 10px;
+}
+
+header .title {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 25px;
+}
+header .title .name-group {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+header .title .private {
+    margin-top: 10px;
+    color: var(--color-second);
+}
+header .title .private .number-member {
+    font-weight: 600;
+    color: var(--color-text);
+}
+header .action {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+header .action button {
+    border-radius: 8px;
+    background: #3a3b3c;
+    color: var(--color-text);
+    border: none;
+    font-weight: 600;
+}
+header .action .action-share {
+    height: 40px;
+    min-width: 90px;
+}
+header .action .action-menu {
+    height: 40px;
+    min-width: 50px;
+}
+.container-inner ul {
+    display: flex;
+    align-items: center;
+}
+.container-inner ul li {
+    display: inline-block;
+    padding: 20px 17px;
+    font-weight: 600;
+    color: var(--color-text);
+    border-radius: 5px;
+}
+.container-inner ul li:hover {
+    background: var(--color-line);
+}
+.container-inner ul li:first-child {
+    color: #8b3833;
+    border-bottom: 3px solid #8b3833;
+}
+
+/* MAIN */
+main {
+    background: var(--color-background2);
+    padding: 20px 0;
+}
+main section {
+    width: 680px;
+    margin: 0 auto;
+    background: var(--color-background);
+    border-radius: 10px;
+    padding: 20px 16px;
+    color: var(--color-text);
+}
+main section .subject {
+    font-size: 1.7rem;
+    color: var(--color-text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 20px;
+}
+main section .rules,
+main section .info {
+    margin-top: 20px;
+}
+main section .info .unread {
+    margin-top: 5px;
+}
+main section .info .info-summary {
+    margin-top: 20px;
+}
+main section .info .info-summary .status {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+}
+main section .info .info-summary .status .symbol {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main section .info .info-summary .status .desc {
+    display: flex;
+    flex-direction: column;
+}
+main section .info .info-summary .status .desc span:last-child {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+/* SECTION - RULES */
+main section:last-child {
+    margin-top: 20px;
+    line-height: 1.2;
+}
+main section .rules .rule-number div:first-child {
+    margin-top: 20px;
+}
+main section .rules .rule-number div:last-child {
+    margin-top: 5px;
+    padding-left: 15px;
+    font-size: 1.4rem;
+    color: var(--color-second);
+    opacity: 0.9;
+}
+
+/* LOGIN */
+.login-register {
+    background-image: url("https://cdn.wallpapersafari.com/82/85/oWxuf9.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+.login-register .login-user {
+    transform: translateY(35%);
+    margin: 0 auto;
+    width: 450px;
+    background: rgba(3, 3, 3, 0.623);
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+}
+.login-register .login-user h3 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+.login-register .login-user .login {
+    margin-top: 20px;
+}
+.login-register .login-user .login input {
+    display: block;
+    margin-top: 20px;
+    border-radius: 999px;
+    border: none;
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+}
+.login-register .login-user .login input::placeholder {
+    font-size: 1.6rem;
+}
+.login-register .login-user .login button {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 99px;
+    padding: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+.login-register .login-user span {
+    display: inline-block;
+    margin-top: 15px;
+}
+.login-register .login-user span button {
+    color: #fff;
+    font-weight: 700;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    text-decoration: underline;
+}
+.login-user span button:hover {
+    padding: 6px 6px;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+}
+.message {
+    margin-top: 10px;
+    line-height: 1.2;
+    color: #e5db1e;
+}
+.login-register .login-user .message span {
+    margin-top: 0;
+}
+/* REGISTER */
+.login-register .register-user {
+    margin: 0 auto;
+    transform: translateY(25%);
+    width: 450px;
+    background: rgba(3, 3, 3, 0.623);
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+}
+.login-register .register-user h3 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+.login-register .register-user .login {
+    margin-top: 20px;
+}
+.login-register .register-user .login input {
+    display: block;
+    margin-top: 20px;
+    border-radius: 999px;
+    border: none;
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+}
+.login-register .register-user .login input::placeholder {
+    font-size: 1.6rem;
+}
+.login-register .register-user .login button {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 99px;
+    padding: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+.login-register .register-user span {
+    display: inline-block;
+}
+.login-register .register-user span button {
+    color: #fff;
+    font-weight: 700;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    text-decoration: underline;
+}
+.register-user span button:hover {
+    padding: 6px 6px;
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+}
+
+.login-register button {
+    background: rgb(71, 164, 173);
+    color: #fff;
+}
+.login-register button:hover {
+    background: rgb(55, 189, 201);
+}
+/* FOR JS */
+.login-register {
+    display: none;
+}
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.login-register .login-user .loading,
+.login-register .login-user .spinner-border {
+    display: inline-block;
+    margin-top: 0px;
+}
+
+.login-register .login-user span {
+    display: inline-block;
+    margin-top: 15px;
+}
+.msg .text-center {
+    border-radius: 10px;
+    color: red;
+}
+
+.login-register .go-to-home {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-top: 25px;
+    height: 35px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    margin-left: 5px;
+}
+
+/* HOME-INNER */
+.home-inner {
+    background: #fff;
+    position: relative;
+}
+.home-inner div,
+.home-inner header,
+.home-inner main {
+    background: #fff;
+}
+.home-inner {
+    width: 1120px;
+    margin: 30px auto;
+}
+.home-inner header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 35px 0;
+}
+.home-inner header h2 {
+    margin: 0 auto;
+    font-size: 35px;
+    color: #000;
+    font-weight: 600;
+    color: #211d70;
+}
+.home-inner header h3 {
+    margin-top: 20px;
+    font-size: 45px;
+    color: #000;
+    font-weight: 600;
+    color: #211d70;
+}
+.home-inner header span {
+    margin-top: 25px;
+}
+.home-inner p {
+    margin-top: 10px;
+    text-align: justify;
+    width: 100%;
+    line-height: 1.2;
+    font-weight: 500;
+    text-indent: 4rem;
+    font-size: 2rem;
+}
+.home-inner img {
+    margin-top: 20px;
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+}
+.home-inner img.layout {
+    height: auto;
+}
+.home-inner .sub-title h4 {
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #211d70;
+}
+
+.home-inner main h3 {
+    margin-top: 20px;
+    font-size: 25px;
+    color: #000;
+    font-weight: 600;
+    color: #211d70;
+    padding: 20px 0;
+}
+.log-out {
+    position: absolute;
+    top: 0;
+    right: -150px;
+    background: rgb(228, 47, 125);
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+}
+.log-out:hover {
+    background: rgb(255, 0, 111);
+}
