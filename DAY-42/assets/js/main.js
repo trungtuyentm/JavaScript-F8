@@ -97,8 +97,8 @@ const app = {
                 post.userId.name
             }</span>
       </a>
-      <h3>${post.title}</h3> 
-      <p>${this.loadMore(this.regexLink(post.content))}</p>
+      <h3>Tiêu đề: ${post.title}</h3> 
+      <p>Nội dung: ${this.loadMore(this.regexLink(post.content))}</p>
       <div class="mb-3">
         <span><i>${relativeTime}</i></span>
         <span>•</span>
@@ -311,7 +311,7 @@ const app = {
             ) {
                 const loadDiv = document.createElement("div");
                 loadDiv.classList.add("loader", "container", "py-3");
-                loadDiv.innerHTML = `<p class="text-center">Đang tải...</p>`;
+                loadDiv.innerHTML = `<p class="text-center">Loading...</p>`;
                 if (!this.root.querySelector(".loader")) {
                     this.root.append(loadDiv);
                     setTimeout(() => {

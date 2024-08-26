@@ -81,6 +81,17 @@ label {
     height: 40px;
     font-size: 1.4rem;
 }
+.btn.btn-primary {
+    margin-top: 5px;
+    padding: 0.5rem;
+}
+.post {
+    line-height: 2;
+}
+.post h3 {
+    font-weight: 600;
+}
+
 #toast {
     position: fixed;
     top: 32px;
@@ -169,4 +180,5 @@ label {
 }
 .username {
     font-size: 1.6rem !important;
+    font-weight: 700;
 }
