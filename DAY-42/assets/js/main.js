@@ -162,14 +162,13 @@ const app = {
     },
 
     loadMore: function (content) {
-        content =
-            content.slice(
-                0,
-                content.indexOf(
-                    "<br>",
-                    content.indexOf("<br>", content.indexOf("<br>") + 1) + 1
-                )
-            ) + `<br><span style="font-style: italic">...Còn tiếp</span>`;
+        content = content.slice(
+            0,
+            content.indexOf(
+                "<br>",
+                content.indexOf("<br>", content.indexOf("<br>") + 1) + 1
+            )
+        );
 
         return content;
     },
@@ -276,29 +275,48 @@ const app = {
         this.root.addEventListener("input", (e) => {
             e.preventDefault();
             if (e.target.classList.contains("date")) {
-                let date = new Date(e.target.value + " 00:00:00");
-                let timestamp = date.getTime();
-                let oldTimestamp = new Date().getTime();
+                let dateValue = e.target.value;
+                if (dateValue) {
+                    let date = new Date(dateValue + " 00:00:00");
+                    let timestamp = date.getTime();
+                    let oldTimestamp = new Date().getTime();
 
-                let relativeTime = this.getTimeRelative(
-                    timestamp,
-                    oldTimestamp,
-                    true
-                );
+                    if (isNaN(timestamp)) {
+                        this.showToast({
+                            title: "Thất bại!",
+                            message: "Vui lòng chọn thời gian hợp lệ.",
+                            type: "error",
+                            duration: 3000,
+                        });
+                    } else {
+                        let relativeTime = this.getTimeRelative(
+                            timestamp,
+                            oldTimestamp,
+                            true
+                        );
 
-                relativeTime.includes("-")
-                    ? this.showToast({
-                          title: "Thất bại!",
-                          message: "Vui lòng chọn thời gian khác",
-                          type: "error",
-                          duration: 3000,
-                      })
-                    : this.showToast({
-                          title: "Thành công!",
-                          message: `Bài viết sẽ được đăng vào ${relativeTime}`,
-                          type: "success",
-                          duration: 3000,
-                      });
+                        relativeTime.includes("-")
+                            ? this.showToast({
+                                  title: "Thất bại!",
+                                  message: "Vui lòng chọn thời gian khác.",
+                                  type: "error",
+                                  duration: 3000,
+                              })
+                            : this.showToast({
+                                  title: "Thành công!",
+                                  message: `Bài viết sẽ được đăng vào ${relativeTime}`,
+                                  type: "success",
+                                  duration: 3000,
+                              });
+                    }
+                } else {
+                    this.showToast({
+                        title: "Thông báo!",
+                        message: "Ngày không được để trống.",
+                        type: "info",
+                        duration: 3000,
+                    });
+                }
             }
         });
 
