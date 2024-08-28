@@ -85,6 +85,26 @@ label {
     margin-top: 5px;
     padding: 0.5rem;
 }
+.username-head {
+    display: flex;
+    gap: 10px;
+}
+.username-head .avatar {
+    background: rgba(232, 15, 73, 0.901);
+    color: #ffffff;
+    height: 50px;
+    width: 50px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+.username-head a {
+    display: flex;
+    align-items: center;
+}
 .post {
     line-height: 2;
 }

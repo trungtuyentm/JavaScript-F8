@@ -79,6 +79,11 @@ const app = {
         this.query.page = 1;
         this.getPosts(this.query);
     },
+    filterName: function (name) {
+        totalName.push(name);
+        console.log(totalName);
+    },
+
     renderPosts: function (posts) {
         const postsEl = this.root.querySelector(".posts");
 
@@ -86,28 +91,42 @@ const app = {
             const postEl = document.createElement("div");
             postEl.classList.add("post", "w-100");
 
+            let name = post.userId.name.trim();
+            let usernameInitial = "";
+            if (name.length > 0) {
+                let nameParts = name.split(" ");
+                let lastName = nameParts[nameParts.length - 1];
+                usernameInitial = lastName.charAt(0).toUpperCase();
+            }
+
             let date = new Date(post.createdAt);
             let oldTimestamp = date.getTime();
             let timestamp = new Date().getTime();
-
             let relativeTime = this.getTimeRelative(timestamp, oldTimestamp);
+
+            console.log(post.userId.name);
             postEl.innerHTML = `
-      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
-        <span class="username" data-user-id="${post.userId._id}">@${
+            <div class="username-head">
+                <div class="avatar">
+                    ${usernameInitial}
+                </div>
+                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+                    <span class="username" data-user-id="${post.userId._id}">@${
                 post.userId.name
             }</span>
-      </a>
-      <h3>Tiêu đề: ${post.title}</h3> 
-      <p>Nội dung: ${this.loadMore(this.regexLink(post.content))}</p>
-      <div class="mb-3">
-        <span><i>${relativeTime}</i></span>
-        <span>•</span>
-        <span>${date.getHours()} giờ ${date.getMinutes()} phút</span>
-      </div>
-      <a class="link-underline-primary blog-detail" href="#" data-blog-id="${
-          post._id
-      }">#View more ${post.title}</a>
-      <hr />
+                </a>
+            </div>
+            <h3>Tiêu đề: ${post.title}</h3> 
+            <p>Nội dung: ${this.loadMore(this.regexLink(post.content))}</p>
+            <div class="mb-3">
+                <span><i>${relativeTime}</i></span>
+                <span>•</span>
+                <span>${date.getHours()} giờ ${date.getMinutes()} phút</span>
+            </div>
+            <a class="link-underline-primary blog-detail" href="#" data-blog-id="${
+                post._id
+            }">#View more ${post.title}</a>
+            <hr />
       `;
 
             postsEl.append(postEl);
@@ -361,19 +380,31 @@ const app = {
             const postEl = document.createElement("div");
             postEl.classList.add("post", "w-100");
 
+            let name = post.userId.name.trim();
+            let usernameInitial = "";
+            if (name.length > 0) {
+                let nameParts = name.split(" ");
+                let lastName = nameParts[nameParts.length - 1];
+                usernameInitial = lastName.charAt(0).toUpperCase();
+            }
+
             let date = new Date(post.createdAt);
             let oldTimestamp = date.getTime();
             let timestamp = new Date().getTime();
 
             let relativeTime = this.getTimeRelative(timestamp, oldTimestamp);
-
             postEl.innerHTML = `
-            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
-              <span class="username" data-user-id="${post.userId._id}">@${
+            <div class="username-head">
+                <div class="avatar">
+                    ${usernameInitial} 
+                </div>
+                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+                  <span class="username" data-user-id="${post.userId._id}">@${
                 post.userId.name
             }</span>
+            </div>
             </a>
-            <h3>${post.title}</h3>
+            <h3>Tiêu đề: ${post.title}</h3>
             <p>${this.regexLink(post.content)}</p>
             <div class="mb-3">
               <span><i>${relativeTime}</i></span>
