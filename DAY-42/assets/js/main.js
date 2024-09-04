@@ -293,12 +293,18 @@ const app = {
 
         this.root.addEventListener("input", (e) => {
             e.preventDefault();
+            const WriteNewBtn = document.querySelector(".btn-primary");
+
             if (e.target.classList.contains("date")) {
                 let dateValue = e.target.value;
+                let shouldCallAPI = true;
+
                 if (dateValue) {
                     let date = new Date(dateValue + " 00:00:00");
                     let timestamp = date.getTime();
-                    let oldTimestamp = new Date().getTime();
+                    let currentDate = new Date();
+                    currentDate.setHours(0, 0, 0, 0);
+                    let oldTimestamp = currentDate.getTime();
 
                     if (isNaN(timestamp)) {
                         this.showToast({
@@ -307,26 +313,40 @@ const app = {
                             type: "error",
                             duration: 3000,
                         });
+                        shouldCallAPI = false;
                     } else {
                         let relativeTime = this.getTimeRelative(
                             timestamp,
                             oldTimestamp,
                             true
                         );
+                        if (timestamp < oldTimestamp) {
+                            this.showToast({
+                                title: "Thất bại!",
+                                message: "Vui lòng chọn thời gian khác.",
+                                type: "error",
+                                duration: 3000,
+                            });
 
-                        relativeTime.includes("-")
-                            ? this.showToast({
-                                  title: "Thất bại!",
-                                  message: "Vui lòng chọn thời gian khác.",
-                                  type: "error",
-                                  duration: 3000,
-                              })
-                            : this.showToast({
-                                  title: "Thành công!",
-                                  message: `Bài viết sẽ được đăng vào ${relativeTime}`,
-                                  type: "success",
-                                  duration: 3000,
-                              });
+                            shouldCallAPI = false;
+                        } else {
+                            if (timestamp === oldTimestamp) {
+                                this.showToast({
+                                    title: "Thành công!",
+                                    message:
+                                        "Bài viết sẽ được đăng ngay bây giờ.",
+                                    type: "success",
+                                    duration: 3000,
+                                });
+                            } else {
+                                this.showToast({
+                                    title: "Thành công!",
+                                    message: `Bài viết sẽ được đăng vào ${relativeTime}`,
+                                    type: "success",
+                                    duration: 3000,
+                                });
+                            }
+                        }
                     }
                 } else {
                     this.showToast({
@@ -335,6 +355,12 @@ const app = {
                         type: "info",
                         duration: 3000,
                     });
+                    shouldCallAPI = false;
+                }
+                if (shouldCallAPI) {
+                    WriteNewBtn.removeAttribute("disabled");
+                } else {
+                    WriteNewBtn.setAttribute("disabled", "disabled");
                 }
             }
         });
@@ -376,7 +402,6 @@ const app = {
       </div>`;
 
             const postsEl = this.root.querySelector(".posts");
-
             const postEl = document.createElement("div");
             postEl.classList.add("post", "w-100");
 
