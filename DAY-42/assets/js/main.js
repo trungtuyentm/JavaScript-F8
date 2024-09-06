@@ -104,7 +104,19 @@ const app = {
             let timestamp = new Date().getTime();
             let relativeTime = this.getTimeRelative(timestamp, oldTimestamp);
 
-            console.log(post.userId.name);
+            let content = this.regexLink(post.content);
+            let contentPreview;
+
+            let lines = content.split(/<br\s*\/?>/i);
+            if (lines.length === 2) {
+                contentPreview = lines[0] + "<br>...";
+            } else if (lines.length > 2) {
+                contentPreview =
+                    lines.slice(0, 2).join("<br>") + "<br>" + "...";
+            } else {
+                contentPreview = content;
+            }
+
             postEl.innerHTML = `
             <div class="username-head">
                 <div class="avatar">
@@ -117,7 +129,7 @@ const app = {
                 </a>
             </div>
             <h3>Tiêu đề: ${post.title}</h3> 
-            <p>Nội dung: ${this.loadMore(this.regexLink(post.content))}</p>
+            <p>${contentPreview}</p>
             <div class="mb-3">
                 <span><i>${relativeTime}</i></span>
                 <span>•</span>
@@ -201,14 +213,25 @@ const app = {
             /(?:https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&[\w-]+=[\w-]+)*)|(?:https:\/\/youtu\.be\/([\w-]+))/g;
         const patternLine = /\n+/g;
         const patternSpace = /\s+/g;
+
         content = content
             .replace(patternPhone, `<a href="tel:$1">$1</a>`)
             .replace(patternEmail, `<a href="mailto:$1">$1</a>`)
-            .replace(
-                patternYoutube,
-                `<iframe src="https://www.youtube.com/embed/$1" width="387" height="218"></iframe>`
-            )
-            .replace(patternLink, `<a href="//$5" target="_blank">$1</a>`)
+            .replace(patternYoutube, function (match, p1, p2) {
+                const videoId = p1 || p2;
+                if (
+                    content.includes(
+                        `<iframe src="https://www.youtube.com/embed/${videoId}"`
+                    )
+                ) {
+                    return match;
+                }
+                return `<iframe src="https://www.youtube.com/embed/${videoId}" width="387" height="218"></iframe>`;
+            })
+            .replace(patternLink, function (match) {
+                if (match.includes("href")) return match;
+                return `<a href="${match}" target="_blank">${match}</a>`;
+            })
             .replace(patternLine, "<br>")
             .replace(patternSpace, " ");
 
