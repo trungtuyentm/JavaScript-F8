@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+}
+
+ul {
+    list-style: none;
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}
+
+.container h1 a {
+    text-decoration: none;
+    color: red;
+}
+header .container h1 {
+    padding: 20px 0 25px 0;
+    border-bottom: 2px solid red;
+}
+main ul li {
+    font-size: 1.7rem;
+}
+
+button {
+    padding: 8px 15px;
+    background: rgb(62, 132, 224);
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-top: 10px;
+}
