@@ -1,3 +1,4 @@
+import ErrorImage from "./images/404.jpg";
 export const error = () => {
-    return `<h1>Error!</h1>`;
+    return `<div class="img-error"><img src="${ErrorImage}"></div>`;
 };
