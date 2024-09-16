@@ -1,4 +1,4 @@
-import Button from "./button";
+import Button from "./ButtonSection";
 import { projectData } from "./projectData";
 
 function SourceProject() {
