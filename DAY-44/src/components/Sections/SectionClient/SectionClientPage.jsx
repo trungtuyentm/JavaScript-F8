@@ -1,6 +1,6 @@
 import Image from "./Image";
 
-function SectionClient() {
+function SectionClientPage() {
     const popStyle = {
         color: "transparent",
     };
@@ -16,4 +16,4 @@ function SectionClient() {
     );
 }
 
-export default SectionClient;
+export default SectionClientPage;
