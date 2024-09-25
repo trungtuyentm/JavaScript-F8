@@ -5,15 +5,22 @@ function SearchTodo({ onSearchTodo, onDebounceSearch }) {
     const [form, setForm] = useState({ todoSearched: "" });
     const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState(false);
+    const [noResults, setNoResults] = useState(false);
     const debounceSearchTerm = useDebounce(searchTerm, 800);
     useEffect(() => {
         const fetchSearch = async () => {
             setLoading(true);
             try {
                 if (debounceSearchTerm) {
-                    await onDebounceSearch(debounceSearchTerm);
+                    const result = await onDebounceSearch(debounceSearchTerm);
+                    if (result && result.length > 0) {
+                        setNoResults(false);
+                    } else {
+                        setNoResults(true);
+                    }
                 } else {
                     await onDebounceSearch("");
+                    setNoResults(false);
                 }
             } catch (error) {
                 console.error("Error searching for todo:", error);
@@ -41,24 +48,27 @@ function SearchTodo({ onSearchTodo, onDebounceSearch }) {
         setSearchTerm(value);
     };
     return (
-        <form
-            action=""
-            className="w-full flex py-4 mb-5"
-            onSubmit={handleSearch}
-        >
-            <input
-                type="search"
-                placeholder="Search Task..."
-                spellCheck="false"
-                value={searchTerm}
-                className="w-2/3 h-14 border-2 border-none outline-none p-3 font-sans font-medium text-base rounded-l-lg"
-                onChange={(e) => {
-                    handleSearchValue(e.target.value);
-                }}
-            />
-            <button className="w-1/3 bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold rounded-r-lg">
-                {loading ? "Searching..." : "Search"}
-            </button>
+        <form action="" onSubmit={handleSearch} className="w-full">
+            <div className="flex py-4 mb-5">
+                <input
+                    type="search"
+                    placeholder="Search Task..."
+                    spellCheck="false"
+                    value={searchTerm}
+                    className="w-2/3 h-14 border-2 border-none outline-none p-3 font-sans font-medium text-base rounded-l-lg"
+                    onChange={(e) => {
+                        handleSearchValue(e.target.value);
+                    }}
+                />
+                <button className="w-1/3 bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold rounded-r-lg">
+                    {loading ? "Searching..." : "Search"}
+                </button>
+            </div>
+            {noResults && !loading && (
+                <p className="bg-white pt-5 pb-5 pl-5 rounded-lg text-red-500 font-bold block mb-5">
+                    No matching tasks found.
+                </p>
+            )}
         </form>
     );
 }

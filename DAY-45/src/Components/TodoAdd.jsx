@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function TodoAdd({ onAddTodo }) {
     const [form, setForm] = useState({ todo: "" });
@@ -11,7 +10,7 @@ function TodoAdd({ onAddTodo }) {
         setLoading(true);
         try {
             if (!form.todo) {
-                toast.error("Todo không được để trống !", {
+                toast.error("Tasks cannot be left blank!", {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -20,10 +19,28 @@ function TodoAdd({ onAddTodo }) {
                     draggable: true,
                     progress: undefined,
                     theme: "light",
+                    className: "custom-toast",
+                    bodyClassName: "custom-body-toast",
+                    progressClassName: "custom-progress-error",
                 });
                 return;
             }
             await onAddTodo({ todo: form.todo });
+
+            toast.success("Added successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                className: "custom-toast",
+                bodyClassName: "custom-body-toast",
+                progressClassName: "custom-progress",
+            });
+
             setForm({ todo: "" });
         } catch (error) {
             console.log(error);
@@ -53,7 +70,6 @@ function TodoAdd({ onAddTodo }) {
             <button className="w-1/3 bg-teal-500 hover:bg-teal-700 text-white text-xl font-bold rounded-r-lg">
                 {loading ? "Adding..." : "Add Task"}
             </button>
-            <ToastContainer />
         </form>
     );
 }

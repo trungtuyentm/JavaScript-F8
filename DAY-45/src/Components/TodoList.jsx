@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { toast } from "react-toastify";
 function TodoList({ todos, onDeleteTodo, onEditTodo }) {
     const [editIndex, setEditIndex] = useState(null);
     const [editValue, setEditValue] = useState("");
@@ -8,8 +9,24 @@ function TodoList({ todos, onDeleteTodo, onEditTodo }) {
         const confirmDelete = window.confirm(
             "Are you sure you want to delete?"
         );
+
         if (confirmDelete) {
             onDeleteTodo(index);
+
+            toast.success("Deleted successfully!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                toastClassName: "custom-toast",
+                className: "custom-toast",
+                bodyClassName: "custom-body-toast",
+                progressClassName: "custom-progress",
+            });
         }
     };
     const handleEditSubmit = (index) => {
@@ -21,6 +38,20 @@ function TodoList({ todos, onDeleteTodo, onEditTodo }) {
         setEditIndex(null);
         setEditValue("");
         setCompleted(false);
+
+        toast.success("Saved successfully!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            className: "custom-toast",
+            bodyClassName: "custom-body-toast",
+            progressClassName: "custom-progress",
+        });
     };
 
     return (

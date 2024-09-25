@@ -12,6 +12,8 @@ import {
 } from "./Libs/todoServer";
 import Loading from "./Loading";
 import SearchTodo from "./SearchTodo";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Todo() {
     const [todos, setTodos] = useState([]);
@@ -25,7 +27,7 @@ function Todo() {
             navigate("/login");
         }
     }, [apiKey, navigate]);
-    //
+
     useEffect(() => {
         const fetchTodos = async () => {
             setLoading(true);
@@ -119,7 +121,6 @@ function Todo() {
         }
     };
     const handleDebounceSearch = async (debounceSearchTerm) => {
-        console.log(debounceSearchTerm);
         try {
             if (apiKey) {
                 const { data } = await searchTodo(debounceSearchTerm, apiKey);
@@ -129,6 +130,7 @@ function Todo() {
                 } else {
                     setTodos([]);
                 }
+                return listTodo;
             }
         } catch (error) {
             console.error("Error searching for todo:", error);
@@ -137,6 +139,7 @@ function Todo() {
 
     return (
         <div className="w-3/5 bg-slate-700 rounded-lg flex flex-col items-center shadow-inner p-10">
+            <ToastContainer />
             <h1 className="font-bold text-white text-2xl">
                 Welcome to Todo App!
             </h1>
