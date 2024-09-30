@@ -1,4 +1,4 @@
-import { useProduct } from "../context/productContext";
+import { useProduct } from "../Context/productContext";
 import PropTypes from "prop-types";
 
 function ProductItem({ product }) {

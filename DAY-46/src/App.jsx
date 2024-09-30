@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
-import Login from "./components/Login";
-import ProductProvider from "./context/productContext";
-import Products from "./components/Products";
+import Login from "./Components/Login";
+import ProductProvider from "./Context/productContext";
+import Products from "./Components/Products";
 
 function App() {
     return (

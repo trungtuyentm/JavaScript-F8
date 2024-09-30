@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useProduct } from "../context/productContext";
+import { useProduct } from "../Context/productContext";
 import PropTypes from "prop-types";
 
 function Login({ children }) {

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useProduct } from "../context/productContext";
+import { useProduct } from "../Context/productContext";
 import Spinner from "../ui/Spinner";
 import ProductList from "./ProductList";
 import ProductOrder from "./ProductOrder";
