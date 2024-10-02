@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --toastify-color-success: blueviolet;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    font-family: "Roboto", sans-serif;
+}
+
+.Toastify__toast-container {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.Toastify__toast-body > div:last-child {
+    width: 320px;
+}
