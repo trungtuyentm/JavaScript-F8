@@ -1,7 +1,7 @@
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import Logo from "../assets/Logo.ico";
+import Logo from "../assets/logo.ico";
 
 function Navigation() {
     const param = useParams().page;
